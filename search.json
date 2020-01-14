@@ -54,11 +54,11 @@
 
 
 {
-"title": "Time Series",
-"tags": "time seriesmoving averageEWMAARIMAAR ModelETS Decomposition",
-"keywords": "time series",
-"url": "time-series",
-"summary": "Description of the basic timeseries."
+"title": "Time Series Analysis",
+"tags": "ARIMAARMAMoving averageSMASMMAEWMAETS decomposition",
+"keywords": "",
+"url": "time-series.md",
+"summary": "Brief indroduction to Time Series analysis."
 }
 ,
 

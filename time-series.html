@@ -4,9 +4,9 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Description of the basic timeseries.">
-<meta name="keywords" content="time seriesmoving averageEWMAARIMAAR ModelETS Decomposition,  time series">
-<title>Time Series | Wajid Manzoor</title>
+<meta name="description" content="Brief indroduction to Time Series analysis.">
+<meta name="keywords" content="ARIMA,  ">
+<title>Time Series Analysis | Wajid Manzoor</title>
 <link rel="stylesheet" href="css/syntax.css">
 
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -138,7 +138,7 @@ config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 
-  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:wajid.manzoor.1999@gmail.com?subject=Wajid Manzoor feedback&body=I have some feedback about the Time Series page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a>
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:wajid.manzoor.1999@gmail.com?subject=Wajid Manzoor feedback&body=I have some feedback about the Time Series Analysis page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a>
 
 </li>
 
@@ -156,7 +156,7 @@ config=TeX-AMS-MML_HTMLorMML"></script>
                                 searchInput: document.getElementById('search-input'),
                                 resultsContainer: document.getElementById('results-container'),
                                 dataSource: 'search.json',
-                                searchResultTemplate: '<li><a href="{url}" title="Time Series">{title}</a></li>',
+                                searchResultTemplate: '<li><a href="{url}" title="Time Series Analysis">{title}</a></li>',
                     noResultsText: 'No results found.',
                             limit: 10,
                             fuzzy: true,
@@ -221,7 +221,7 @@ config=TeX-AMS-MML_HTMLorMML"></script>
         <!-- Content Column -->
         <div class="col-md-9" id="tg-sb-content">
             <div class="post-header">
-   <h1 class="post-title-main">Time Series</h1>
+   <h1 class="post-title-main">Time Series Analysis</h1>
 </div>
 
 
@@ -229,7 +229,7 @@ config=TeX-AMS-MML_HTMLorMML"></script>
 <div class="post-content">
 
    
-    <div class="summary">Description of the basic timeseries.</div>
+    <div class="summary">Brief indroduction to Time Series analysis.</div>
    
 
     
@@ -261,6 +261,8 @@ $('#toc').on('click', 'a', function() {
     
 
    <h1 id="introduction">Introduction</h1>
+
+<p>Time series is a discreate sequence taken at  successive spaced points at time.Time series analysis comprises methods for analyzing time series data in order to extract meaningful statistics and other characteristics of the data. Time series forecasting is the use of a model to predict future values based on previously observed values.In this notebook we are going to analysise time series using diffrent techniques to build intuitions and then use those intutions to predict future values of time series using forecasting.Time series forcasting can be done by many model.In this notebook we are going to use ARIMA models.</p>
 
 <h1 id="introduction-to-time-series-with-pandas">Introduction to Time Series with Pandas</h1>
 <ul>
@@ -656,16 +658,17 @@ memory usage: 68.8 KB
 <span class="n">df</span><span class="p">[</span><span class="s">"Close_expanding"</span><span class="p">]</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s">'Close'</span><span class="p">]</span><span class="o">.</span><span class="n">expanding</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f5148c77110&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f8d4395aa90&gt;
 </code></pre></div></div>
 
-<p><img src="../../../data/time-series-analysis/output_12_1.png" alt="png" /></p>
+<p><img src="/pages/mydoc/Financial%20Analysis/time-series-data/output_12_1.png" alt="png" /></p>
 
 <h2 id="resamplling">Resamplling</h2>
-<p><strong>Time series offest strings</strong></p>
+<p>It is a Convenience method for frequency conversion and resampling of time series
+<strong>Time series offest strings</strong></p>
 
 <table border="1" class="docutils">
 <colgroup>
@@ -948,6 +951,7 @@ memory usage: 68.8 KB
 </div>
 
 <h2 id="time-shifting">Time Shifting</h2>
+<p>shifts the column of a data frame by any desired interval of time</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </code></pre></div></div>
@@ -1258,16 +1262,16 @@ memory usage: 68.8 KB
 
         year      - 1959q1 - 2009q3
         quarter   - 1-4
-        realgdp   - Real gross domestic product (Bil. of chained 2005 US\\(,
+        realgdp   - Real gross domestic product (Bil. of chained 2005 US\\),
                     seasonally adjusted annual rate)
         realcons  - Real personal consumption expenditures (Bil. of chained
                     2005 US\\), seasonally adjusted annual rate)
         realinv   - Real gross private domestic investment (Bil. of chained
-                    2005 US\\(, seasonally adjusted annual rate)
+                    2005 US\\), seasonally adjusted annual rate)
         realgovt  - Real federal consumption expenditures &amp; gross investment
                     (Bil. of chained 2005 US\\), seasonally adjusted annual rate)
         realdpi   - Real private disposable income (Bil. of chained 2005
-                    US\\(, seasonally adjusted annual rate)
+                    US\\), seasonally adjusted annual rate)
         cpi       - End of the quarter consumer price index for all urban
                     consumers: all items (1982-84 = 100, seasonally adjusted).
         m1        - End of the quarter M1 nominal money stock (Seasonally
@@ -1408,7 +1412,8 @@ memory usage: 68.8 KB
 </table>
 </div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span><span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">datetools</span><span class="o">.</span><span class="n">dates_from_range</span><span class="p">(</span><span class="s">'1959Q1'</span><span class="p">,</span> <span class="s">'2009Q3'</span><span class="p">))</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#create a sm datetime index that includes year and quater
+</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span><span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">datetools</span><span class="o">.</span><span class="n">dates_from_range</span><span class="p">(</span><span class="s">'1959Q1'</span><span class="p">,</span> <span class="s">'2009Q3'</span><span class="p">))</span>
 </code></pre></div></div>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">=</span><span class="n">index</span>
@@ -1421,10 +1426,10 @@ memory usage: 68.8 KB
 <span class="n">df</span><span class="p">[</span><span class="s">'cynical'</span><span class="p">]</span><span class="o">=</span><span class="n">gdp_cycle</span>
 </code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[[</span><span class="s">'realgdp'</span><span class="p">,</span><span class="s">'trend'</span><span class="p">,</span><span class="s">'cynical'</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">4</span><span class="p">));</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[[</span><span class="s">'realgdp'</span><span class="p">,</span><span class="s">'trend'</span><span class="p">,</span><span class="s">'cynical'</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">));</span>
 </code></pre></div></div>
 
-<p><img src="../../../data/time-series-analysis/output_34_0.png" alt="png" /></p>
+<p><img src="/pages/mydoc/Financial%20Analysis/time-series-data/output_34_0.png" alt="png" /></p>
 
 <p><strong>Disadvantages</strong></p>
 <ul>
@@ -1445,31 +1450,31 @@ memory usage: 68.8 KB
 </ul>
 
 <h3 id="1-simple-moving-average">1. Simple Moving Average</h3>
-<p><script type="math/tex">\text{SMA}_i = \frac{\Sigma x_i}{N}</script> 
+<p><script type="math/tex">\text{SMA}_i = \frac{\Sigma x_i}{N}</script>
 <script type="math/tex">N = \text{Calculation period}</script></p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[</span><span class="s">'SMA6'</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s">'realgdp'</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">df</span><span class="p">[</span><span class="s">'SMA12'</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s">'realgdp'</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
-<span class="n">df</span><span class="p">[[</span><span class="s">"SMA6"</span><span class="p">,</span><span class="s">'SMA12'</span><span class="p">,</span><span class="s">'realgdp'</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">9</span><span class="p">));</span>
+<span class="n">df</span><span class="p">[[</span><span class="s">"SMA6"</span><span class="p">,</span><span class="s">'SMA12'</span><span class="p">,</span><span class="s">'realgdp'</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">));</span>
 </code></pre></div></div>
 
-<p><img src="../../../data/time-series-analysis/output_38_0.png" alt="png" /></p>
+<p><img src="/pages/mydoc/Financial%20Analysis/time-series-data/output_38_0.png" alt="png" /></p>
 
 <h3 id="2--smoothed-moving-average-smma">2.  Smoothed Moving Average (SMMA)</h3>
 <ul>
   <li>First Value is calculated by 
 <script type="math/tex">\text{SMMA}_1 = \frac{\Sigma x_i}{N}</script></li>
   <li>Second Value is calculated by 
-<script type="math/tex">\text{SMMA}_2 = \text{SMMA}_1 \times (N-1) + \frac{x_i}{N}</script></li>
+<script type="math/tex">\text{SMMA}_2 = \frac{\text{SMMA}_1 \times (N-1) + x_i}{N}</script></li>
   <li>Succeeding Values are calculated by 
-<script type="math/tex">\text{SMMA}_i = \frac{\text{SMMA}_{(i-1)} \times N +x_i}{N}</script> 
+<script type="math/tex">\text{SMMA}_i = \frac{\text{SMMA}_{(i-1)} \times N +x_i}{N}</script>
 <script type="math/tex">N = \text{Calculation period}</script></li>
 </ul>
 
 <h3 id="3-linear-weighted-moving-average">3. LInear Weighted Moving Average</h3>
-<p><script type="math/tex">\text{LWMA}_i =\frac{\Sigma x_i) \times \omega_i}{\Sigma N}</script> 
-where \)N =\( Calculation period</p>
+<p><script type="math/tex">\text{LWMA}_i =\frac{\Sigma x_i \times \omega_i}{\Sigma N}</script>
+where \(N =\) Calculation period</p>
 
 <h3 id="4-exponential-weighted-moving-average">4. Exponential weighted moving Average</h3>
 <ul>
@@ -1477,19 +1482,21 @@ where \)N =\( Calculation period</p>
 </ul>
 
 <p><script type="math/tex">% <![CDATA[
-y_t=\begin{cases}x_1 & t=1\\ \alpha x_t+(1-\alpha)y_{t-1} & t>1\end{cases} %]]></script> 
-\)y_1\( can be intailize to \(x_1\) or average of first 4 or 5 observations. \(y_1\) initailizing effects on resultant moving average if depends on \(\omega\) smaller \(\omega\) make choice of \(y_1\) relatively more important.</p>
+y_t=\begin{cases}x_1 & t=1\\ \alpha x_t+(1-\alpha)y_{t-1} & t>1\end{cases} %]]></script>
+\(y_1\) can be intailize to \(x_1\) or average of first 4 or 5 observations. \(y_1\) initailizing effects on resultant moving average if depends on \(\omega\).Smaller \(\omega\) make choice of \(y_1\) relatively more important.</p>
 
 <p>\(y_t = y_{t-1} + \alpha(x_t-y_{t-1})\)</p>
 
 <p>After repeated application of this formula:
-\(y_t=\omega[x_t+(1-\omega)x_{t-1}+(1-\omega)^2x_{t-2}+(1-\omega)^3x_{t-3}+……]\)</p>
+\(y_t=\alpha[x_t+(1-\alpha)x_{t-1}+(1-\alpha)^2x_{t-2}+(1-\alpha)^3x_{t-3}+……]\)</p>
 
 <p>\(\frac{1}{\alpha}=1+(1-\alpha)^2+(1-\alpha)^3+(1-\alpha)^4+….\)</p>
 
-<p>so</p>
+<p>so
+<script type="math/tex">y_t= \frac{[x_t+(1-\alpha)x_{t-1}+(1-\alpha)^2x_{t-2}+(1-\alpha)^3x_{t-3}+......]}{1+(1-\alpha)^2+(1-\alpha)^3+(1-\alpha)^4+....}</script></p>
 
-<script type="math/tex; mode=display">y_t= \frac{\sum_{i=0}^t\omega_i x_{t-1}}{\sum \omega_i}</script>
+<p>taking \(\omega^i=(1-\alpha)^i\) we have
+<script type="math/tex">y_t= \frac{\sum_{i=0}^t\omega_i x_{t-1}}{\sum \omega_i}</script></p>
 
 <p>Commonly used values of  \(\alpha\):</p>
 
@@ -1567,10 +1574,10 @@ y_t=\begin{cases}x_1 & t=1\\ \alpha x_t+(1-\alpha)y_{t-1} & t>1\end{cases} %]]><
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[[</span><span class="s">'EWMA12'</span><span class="p">,</span><span class="s">'EWMA24'</span><span class="p">,</span><span class="s">'EWMA'</span><span class="p">,</span><span class="s">'SMA6'</span><span class="p">,</span><span class="s">'SMA12'</span><span class="p">,</span><span class="s">'realgdp'</span><span class="p">]][</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">//</span><span class="mi">10</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f5145928d10&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f8d37a055d0&gt;
 </code></pre></div></div>
 
-<p><img src="../../../data/time-series-analysis/output_43_1.png" alt="png" /></p>
+<p><img src="/pages/mydoc/Financial%20Analysis/time-series-data/output_43_1.png" alt="png" /></p>
 
 <h2 id="ets-decomposition">ETS-Decomposition</h2>
 <ul>
@@ -1616,32 +1623,28 @@ Let \(y_t\) be a time series then</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">statsmodels.tsa.seasonal</span> <span class="kn">import</span> <span class="n">seasonal_decompose</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">seasonal_decompose</span><span class="p">(</span><span class="n">airline</span><span class="p">[</span><span class="s">'Thousands of Passengers'</span><span class="p">],</span> <span class="n">model</span><span class="o">=</span><span class="s">'additive'</span><span class="p">)</span>
-<span class="n">result</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p><img src="../../../data/time-series-analysis/output_47_0.png" alt="png" /></p>
-
-<p><img src="../../../data/time-series-analysis/output_47_1.png" alt="png" /></p>
+<p><img src="/pages/mydoc/Financial%20Analysis/time-series-data/output_47_0.png" alt="png" /></p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">result</span> <span class="o">=</span> <span class="n">seasonal_decompose</span><span class="p">(</span><span class="n">airline</span><span class="p">[</span><span class="s">'Thousands of Passengers'</span><span class="p">],</span> <span class="n">model</span><span class="o">=</span><span class="s">'multiplicative'</span><span class="p">)</span>
-<span class="n">result</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p><img src="../../../data/time-series-analysis/output_48_0.png" alt="png" /></p>
-
-<p><img src="../../../data/time-series-analysis/output_48_1.png" alt="png" /></p>
+<p><img src="/pages/mydoc/Financial%20Analysis/time-series-data/output_48_0.png" alt="png" /></p>
 
 <p>Some terms before we go ahead</p>
 
 <p><strong>1.Mean</strong>
 is average value of the dataset.
-<script type="math/tex">\mu=\frac{\sum_0^n x_i}{n}</script> 
+<script type="math/tex">\mu=\frac{\sum_0^n x_i}{n}</script>
 <strong>2.Variance</strong>
 is the expectation of the squared deviation of a random variable from its mean.
-<script type="math/tex">\sigma^2=\frac{\sum_0^n (x_i-\mu)^2}{n}</script> 
+<script type="math/tex">\sigma^2=\frac{\sum_0^n (x_i-\mu)^2}{n}</script>
 <strong>3.Covariance</strong>
 is a measure of the joint variability of two random variables.
-<script type="math/tex">\text{cov}(x,y)=\frac{\sum_0^n(x_i-\mu_x)(y_i-\mu_y)}{n}</script> 
+<script type="math/tex">\text{cov}(x,y)=\frac{\sum_0^n(x_i-\mu_x)(y_i-\mu_y)}{n}</script>
 <strong>4. Stationary series</strong>
 is time series whose mean ,variance and covariance are not function of time.</p>
 
@@ -1685,7 +1688,7 @@ in statistics is a transformation applied to time-series data in order to make i
 
 <script type="math/tex; mode=display">y_t=c+\sum_{i=1}^p \varphi_iy_{t-i}+\epsilon_t</script>
 
-<p>applying lag operator \(L\) (where \(L^ny_t=y_{t-n}\)) we have</p>
+<p>applying lag operator \(L\) (where \(L^ny_t=y_{t-n})\) we have</p>
 
 <script type="math/tex; mode=display">y_t(1-\varphi_1L-\varphi_2L^2-....-\varphi_pL^p)=\epsilon_t</script>
 
@@ -1697,28 +1700,43 @@ in statistics is a transformation applied to time-series data in order to make i
 
 <p>if \(\lambda\) is its root then condition is</p>
 
-<script type="math/tex; mode=display">|\lambda|=\frac{1}{|\varphi|}>1</script>
+<table>
+  <tbody>
+    <tr>
+      <td>\(</td>
+      <td>\lambda</td>
+      <td>=\frac{1}{</td>
+      <td>\varphi</td>
+      <td>}&gt;1\)</td>
+    </tr>
+  </tbody>
+</table>
 
-<script type="math/tex; mode=display">|\varphi| \lt 1</script>
+<table>
+  <tbody>
+    <tr>
+      <td>\(</td>
+      <td>\varphi</td>
+      <td>&lt;1\)</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>A necessary but not sufficient requirement for the AR(p) model to be stationary is that
 the summation of the p autoregressive coefficients should be less than 1:</p>
 
-<script type="math/tex; mode=display">\sum_{i=0}^p\varphi \lt 1</script>
+<script type="math/tex; mode=display">% <![CDATA[
+\sum_{i=0}^p\varphi<1 %]]></script>
 
 <p>Properties of \(AR(1)\):</p>
 
 <ul>
-  <li>Mean</li>
-</ul>
+  <li>
+    <p>Mean</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align} y&=x\\ z&=a\\ \end{align} %]]></script>
-
-<script type="math/tex; mode=display">% <![CDATA[
+    <script type="math/tex; mode=display">% <![CDATA[
 \begin{align} &\text{we have}\\ &y_t=c+\varphi y_{t-1} + \epsilon_t\\\\ &\text{so}\\ &E(y_t)=E(c) + E(\varphi y_{t-1})+E(\epsilon_t)\\ &E(y_t)=E(c) + \varphi E( y_{t-1})+E(\epsilon_t)\\\\ &\text{for stationary data } E(y_t)=E(y_{t-1})\\ &\text{put } E(y_t)=E(y_{t-1})=\mu_y  \text{and} E(\epsilon_t)=\mu_\epsilon\\ &\mu_y=E(c) + \varphi \mu_y+\mu_\epsilon\\ &\mu_y=\frac{c}{1-\mu_\epsilon}\\\\ &\text{where } E(c) =c \text{ as c is constant}\\ \end{align} %]]></script>
-
-<ul>
+  </li>
   <li>
     <p>Variance</p>
 
@@ -1742,58 +1760,67 @@ the summation of the p autoregressive coefficients should be less than 1:</p>
   \end{align} %]]></script>
   </li>
   <li>
-    <p>Covariance
-  <script type="math/tex">% <![CDATA[
-\begin{align}
-  &\text{we know}\\
-  &cov(a,b)=E\{[a-E(a)][b-E(b)]\}\\\\
-  &\text{so}\\
-  &cov(y_t,y_{t-1})=E\{[y_t-E(y_t)][y_{t-1}-E(y_{t-1})]\}\\
-  &cov(y_t,y_{t-1})=E(y_t y_{t-1})-E(y_tE(y_{t-1}))-E(y_{t-1}E(y_t))+E(y_t)E(y_{t-1})\\
-  &cov(y_t,y_{t-1})=E(y_t y_{t-1})-E(y_t)E(y_{t-1}))-E(y_t)E(y_{t-1})+E(y_t)E(y_{t-1})\\\\
-  &\text{as } E(y_t)=E(y_{t-1})=\mu_y\\
-  &cov(y_t,y_{t-1})=E(y_t y_{t-1})-\mu_y^2\\\\
-  &\text{now}\\
-  &E(y_t y_{t-1})=E([c+\varphi y_{t-1} +\epsilon_t] y_{t-1})\\
-  &E(y_t y_{t-1})=cE(y_{t-1})+\varphi E(y_{t-1}^2)+E(\epsilon_ty_{t-1})\\
-  &E(y_t y_{t-1})=c\mu_y+\varphi(\sigma_y^2-\mu_y^2)\\\\
-  &\text{so}\\
-  &cov(y_t,y_{t-1})=c\mu_y+\varphi(\sigma_y^2-\mu_y^2)-\mu_y^2\\
-  &cov(y_t,y_{t-1})=c^2+\varphi(\sigma_y^2-c^2)-c^2\\
-  &cov(y_t,y_{t-1})=\varphi(\sigma_y^2-c^2)\\\\
-  &\text{now}\\
-  &cov(y_t,y_{t-2})=E(y_t y_{t-2})-\mu_y^2\\\\
-  &\text{here}\\
-  &E(y_t y_{t-2})=E([c+\varphi y_{t-1} +\epsilon_t] y_{t-2})\\
-  &E(y_t y_{t-2})=E([c+\varphi(c+\varphi y_{t-2} +\epsilon_{t-1}) +\epsilon_t] y_{t-2})\\
-   &E(y_t y_{t-2})=cE(y_{t-2})+\varphi cE(y_{t-2})+\varphi^2E(y_{t-2}^2)+\varphi E(\epsilon_{t-1}y_{t-2})+E(\epsilon_ty_{t-2})\\
-   &E(y_t y_{t-2})=c\mu_y+\varphi c\mu_y+\varphi^2(\sigma_y^2-\mu_y^2)\\
-  &cov(y_t,y_{t-2})=c\mu_y+\varphi c\mu_y+\varphi^2(\sigma_y^2-\mu_y^2)-\mu_y^2\\
-  &cov(y_t,y_{t-2})=c^2+\varphi c^2+\varphi^2(\sigma_y^2-c^2)-c^2\\
-  &cov(y_t,y_{t-2})=\varphi c^2+\varphi^2(\sigma_y^2-c^2)\\\\
-  &\text{so in general we have }\\
-  &cov(y,y_{y-k})=\varphi^{k}(\sigma_y^2-c^2) +c^2\sum_{i=0}^{k-1} \varphi^i
-  \end{align} %]]></script></p>
+    <p>Covariance</p>
   </li>
-  <li>
-    <p>Autocorrelation 
-<script type="math/tex">% <![CDATA[
+</ul>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+&\text{we know}\\
+&cov(a,b)=E\{[a-E(a)][b-E(b)]\}\\\\
+&\text{so}\\
+&cov(y_t,y_{t-1})=E\{[y_t-E(y_t)][y_{t-1}-E(y_{t-1})]\}\\
+&cov(y_t,y_{t-1})=E(y_t y_{t-1})-E(y_tE(y_{t-1}))-E(y_{t-1}E(y_t))+E(y_t)E(y_{t-1})\\
+&cov(y_t,y_{t-1})=E(y_t y_{t-1})-E(y_t)E(y_{t-1}))-E(y_t)E(y_{t-1})+E(y_t)E(y_{t-1})\\\\
+&\text{as } E(y_t)=E(y_{t-1})=\mu_y\\
+&cov(y_t,y_{t-1})=E(y_t y_{t-1})-\mu_y^2\\\\
+&\text{now}\\
+&E(y_t y_{t-1})=E([c+\varphi y_{t-1} +\epsilon_t] y_{t-1})\\
+&E(y_t y_{t-1})=cE(y_{t-1})+\varphi E(y_{t-1}^2)+E(\epsilon_ty_{t-1})\\
+&E(y_t y_{t-1})=c\mu_y+\varphi(\sigma_y^2-\mu_y^2)\\\\
+&\text{so}\\
+&cov(y_t,y_{t-1})=c\mu_y+\varphi(\sigma_y^2-\mu_y^2)-\mu_y^2\\
+&cov(y_t,y_{t-1})=c^2+\varphi(\sigma_y^2-c^2)-c^2\\
+&cov(y_t,y_{t-1})=\varphi(\sigma_y^2-c^2)\\\\
+&\text{now}\\
+&cov(y_t,y_{t-2})=E(y_t y_{t-2})-\mu_y^2\\\\
+&\text{here}\\
+&E(y_t y_{t-2})=E([c+\varphi y_{t-1} +\epsilon_t] y_{t-2})\\
+&E(y_t y_{t-2})=E([c+\varphi(c+\varphi y_{t-2} +\epsilon_{t-1}) +\epsilon_t] y_{t-2})\\
+  &E(y_t y_{t-2})=cE(y_{t-2})+\varphi cE(y_{t-2})+\varphi^2E(y_{t-2}^2)+\varphi E(\epsilon_{t-1}y_{t-2})+E(\epsilon_ty_{t-2})\\
+  &E(y_t y_{t-2})=c\mu_y+\varphi c\mu_y+\varphi^2(\sigma_y^2-\mu_y^2)\\
+&cov(y_t,y_{t-2})=c\mu_y+\varphi c\mu_y+\varphi^2(\sigma_y^2-\mu_y^2)-\mu_y^2\\
+&cov(y_t,y_{t-2})=c^2+\varphi c^2+\varphi^2(\sigma_y^2-c^2)-c^2\\
+&cov(y_t,y_{t-2})=\varphi c^2+\varphi^2(\sigma_y^2-c^2)\\\\
+&\text{so in general we have }\\
+&cov(y,y_{y-k})=\varphi^{k}(\sigma_y^2-c^2) +c^2\sum_{i=0}^{k-1} \varphi^i
+\end{align} %]]></script>
+
+<ul>
+  <li>Autocorrelation</li>
+</ul>
+
+<script type="math/tex; mode=display">% <![CDATA[
 \begin{align}
 &cor(y_t,y_{t-k})=\frac{cov(y_t,y_{t-k})}{\sigma_{y_t}\sigma_{y_{t-k}}}\\
 &cor(y_t,y_{t-k})=\frac{\varphi^{k}(\sigma_y^2-c^2) +c^2\sum_{i=0}^{k-1} \varphi^i}{\sigma_y^2}\\\\
 &\text{if } c=0 \text{ then}\\
 &cor(y_t,y_{t-k})=\varphi^k\\
-\end{align} %]]></script> 
-  so for \(AR(1)\) model Autocorrelation function will deacy exponentially as k increases as \(|\varphi| \lt 1\).</p>
+\end{align} %]]></script>
 
-    <p>Finally, the partial autocorrelation function (PACF) involves plotting the estimated
-coefficient \(Y_{t−k}\)from an OLS estimate of an \(AR(k) \)process, against k. If the observations
-are generated by an \(AR(p)\) process then the theoretical partial autocorrelations will be
-high and significant for up to p lags and zero for lags beyond p.</p>
-  </li>
-</ul>
+<table>
+  <tbody>
+    <tr>
+      <td>so for \(AR(1)\) model Autocorrelation function will deacy exponentially as k increases as \(</td>
+      <td>\varphi</td>
+      <td>&lt;1\).</td>
+    </tr>
+  </tbody>
+</table>
 
-<h2 id="i">I</h2>
+<p>Finally, the partial autocorrelation function (PACF) involves plotting the estimated coefficient \(Y_{t−k}\)from an OLS estimate of an \(AR(k) \)process, against k. If the observations are generated by an \(AR(p)\) process then the theoretical partial autocorrelations will be high and significant for up to p lags and zero for lags beyond p.</p>
+
+<h2 id="i-model">I Model</h2>
 <p><strong>Intregated process</strong> used to replace  data values by diffrencing values.
 so</p>
 
@@ -1806,6 +1833,7 @@ so</p>
 <p>In \(I(d)\) model d represent the number of diffrencing.</p>
 
 <h2 id="ma-model">MA Model</h2>
+
 <p><strong>Moving Average model</strong> 
  is conceptually a linear regression of the current output value of the series against current and previous (observed) white noise error terms or random shocks.
 Let \(y_t\) be a time series then \(MA(q)\) MA of order q is defined as 
@@ -1829,8 +1857,9 @@ Let \(y_t\) be a time series then \(MA(q)\) MA of order q is defined as
 
 <ul>
   <li>
-    <p>Invertibility of MA Model
-  consider a \(MA(1)\) model</p>
+    <p>Invertibility of MA Model</p>
+
+    <p>consider a \(MA(1)\) model</p>
 
     <script type="math/tex; mode=display">y_t=\epsilon_t+\theta\epsilon_{t-1}</script>
 
@@ -1842,8 +1871,8 @@ Let \(y_t\) be a time series then \(MA(q)\) MA of order q is defined as
   &\epsilon_t=y_t(1+\theta L)^{-1}\\\\
   &\text{if } | \theta | <1 \text{ above equation can be considered as sum of an infinite gp series}\\\\
   &\epsilon_t=y_t(1-\theta L +\theta^2 L^2-\theta^3 L^3+......)
-  \end{align} %]]></script> 
-  so any \(MA(q)\) model can be converted into infnite \(AR\) process with geometrically declining weights if \(|\theta| \lt 1\).</p>
+  \end{align} %]]></script>
+  so any \(MA(q)\) model can be converted into infnite \(AR\) process with geometrically declining weights if \(|\theta|&lt;1\).</p>
   </li>
 </ul>
 
@@ -1852,23 +1881,30 @@ Ignorig the term \mu for easier calculation.</p>
 
 <ul>
   <li>
-    <p>Mean
-  It is clearly zero as it is mean of white noise.</p>
+    <p>Mean</p>
+
+    <p>It is clearly zero as it is mean of white noise.</p>
 
     <script type="math/tex; mode=display">\mu_y=0</script>
   </li>
   <li>
-    <p>Variance 
-<script type="math/tex">% <![CDATA[
+    <p>Variance</p>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">% <![CDATA[
 \begin{align}
 &var(y_t)=E(y_t^2)-E(\mu_{y_t})\\
 &\sigma_{y}^2=E([\epsilon_t+\theta\epsilon_{t-1}]^2)\\
 &\sigma_{y}^2=E([\epsilon_t^2)+\theta^2 E([\epsilon_t^2)+2\theta E(\epsilon_t)\\
 &\sigma_{y}^2=\sigma_{\epsilon}^2+\theta^2 \sigma_\epsilon^2\\
-\end{align} %]]></script></p>
-  </li>
-  <li>Covariance
-<script type="math/tex">% <![CDATA[
+\end{align} %]]></script>
+
+<ul>
+  <li>Covariance</li>
+</ul>
+
+<script type="math/tex; mode=display">% <![CDATA[
 \begin{align}
 &cov(y_t,y_{t-1})=E([\epsilon_t+\theta\epsilon_{t_1}][\epsilon_{t-1}+\theta\epsilon_{t-2}])\\
 &cov(y_t,y_{t-1})=E(\epsilon_t\epsilon_{t-1})+\theta E(\epsilon_t\epsilon_{t-2})+\theta E(\epsilon_{t-1}^2)+\theta^2 E(\epsilon_{t-1}\epsilon_{t-2})\\\\
@@ -1880,20 +1916,20 @@ Ignorig the term \mu for easier calculation.</p>
 &\text{as } \epsilon_t \text{ is serially uncorelated as it is random data}\\
 &cov(y_t,y_{t-2})=0\\
 &cov(y_t,y_{t-k})=\begin{cases} \theta \sigma_\epsilon^2 & k=0\\ 0 && k>1\end{cases}
-\end{align} %]]></script></li>
+\end{align} %]]></script>
+
+<ul>
   <li>Autocorrelation</li>
 </ul>
 
-<p><script type="math/tex">% <![CDATA[
+<script type="math/tex; mode=display">% <![CDATA[
 \begin{align}
 &\text{we have}\\
 &cor(y_t,y_{t-k})=\frac{cor(y_t,y_{t-k})}{\sigma_{y_t}\sigma_{y_{t-k}}}\\
 &cor(y_t,y_{t-k})=\begin{cases}\frac{\theta}{1+\theta^2}& k=1\\ 0 & k>1\end{cases}\\
-\end{align} %]]></script> 
-    So, with an \(MA(q)\) model the correlogram (the graph of the ACF) is expected to have
-q spikes for \(k = q\), and then go down to zero immediately. Also, since any MA process
-can be represented as an AR process with geometrically declining coefficients, the PACF
-for an MA process should decay slowly.</p>
+\end{align} %]]></script>
+
+<p>So, with an \(MA(q)\) model the correlogram (the graph of the ACF) is expected to have q spikes for \(k = q\), and then go down to zero immediately. Also, since any MA process can be represented as an AR process with geometrically declining coefficients, the PACF for an MA process should decay slowly.</p>
 
 <h2 id="arma">ARMA</h2>
 <p>\(ARMA(p,q)\) is combination of \(AR(p)\) and \(MA(q)\) models.</p>
@@ -2180,22 +2216,22 @@ be good starting points choose according the table.</p>
 
 <h3 id="visualize-data">Visualize data</h3>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df1</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">));</span>
 </code></pre></div></div>
 
-<p><img src="../../../data/time-series-analysis/output_68_0.png" alt="png" /></p>
+<p><img src="/pages/mydoc/Financial%20Analysis/time-series-data/output_75_0.png" alt="png" /></p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">timeseries1</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="s">'Milk in pounds per cow'</span><span class="p">]</span>
 <span class="n">timeseries1</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s">'12 Month Rolling Mean'</span><span class="p">)</span>
 <span class="n">timeseries1</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s">'12 Month Rolling Std'</span><span class="p">)</span>
-<span class="n">timeseries1</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">timeseries1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.legend.Legend at 0x7f51451f2a50&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.legend.Legend at 0x7f8d373f54d0&gt;
 </code></pre></div></div>
 
-<p><img src="../../../data/time-series-analysis/output_69_1.png" alt="png" /></p>
+<p><img src="/pages/mydoc/Financial%20Analysis/time-series-data/output_76_1.png" alt="png" /></p>
 
 <h3 id="decomposition">Decomposition</h3>
 <p>To see individaul parts</p>
@@ -2210,7 +2246,7 @@ be good starting points choose according the table.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Figure size 432x288 with 0 Axes&gt;
 </code></pre></div></div>
 
-<p><img src="../../../data/time-series-analysis/output_71_1.png" alt="png" /></p>
+<p><img src="/pages/mydoc/Financial%20Analysis/time-series-data/output_78_1.png" alt="png" /></p>
 
 <h3 id="testing-for-stationary">Testing for Stationary</h3>
 
@@ -2297,29 +2333,29 @@ weak evidence against null hypothesis, time series has a unit root, indicating i
 <span class="n">df1</span><span class="p">[</span><span class="s">'Seasonal Difference'</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df1</span><span class="p">[</span><span class="s">'Milk First Difference'</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df1</span><span class="p">[</span><span class="s">'Milk First Difference'</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f5145a77a50&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f8d3770c310&gt;
 </code></pre></div></div>
 
-<p><img src="../../../data/time-series-analysis/output_83_1.png" alt="png" /></p>
+<p><img src="/pages/mydoc/Financial%20Analysis/time-series-data/output_90_1.png" alt="png" /></p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df1</span><span class="p">[</span><span class="s">'Milk Second Difference'</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df1</span><span class="p">[</span><span class="s">'Milk Second Difference'</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f5145a10350&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f8d376be950&gt;
 </code></pre></div></div>
 
-<p><img src="../../../data/time-series-analysis/output_84_1.png" alt="png" /></p>
+<p><img src="/pages/mydoc/Financial%20Analysis/time-series-data/output_91_1.png" alt="png" /></p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df1</span><span class="p">[</span><span class="s">'Seasonal Difference'</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df1</span><span class="p">[</span><span class="s">'Seasonal Difference'</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f5144fe68d0&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f8d37b03ed0&gt;
 </code></pre></div></div>
 
-<p><img src="../../../data/time-series-analysis/output_85_1.png" alt="png" /></p>
+<p><img src="/pages/mydoc/Financial%20Analysis/time-series-data/output_92_1.png" alt="png" /></p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">adf_check</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="s">'Milk First Difference'</span><span class="p">])</span>
 </code></pre></div></div>
@@ -2355,13 +2391,13 @@ weak evidence against null hypothesis, time series has a unit root, indicating i
 </code></pre></div></div>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df1</span><span class="p">[</span><span class="s">'Seasonal First Difference'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="s">'Milk First Difference'</span><span class="p">]</span> <span class="o">-</span> <span class="n">df1</span><span class="p">[</span><span class="s">'Milk First Difference'</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">df1</span><span class="p">[</span><span class="s">'Seasonal First Difference'</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">df1</span><span class="p">[</span><span class="s">'Seasonal First Difference'</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f5145559b90&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f8d37a0f490&gt;
 </code></pre></div></div>
 
-<p><img src="../../../data/time-series-analysis/output_89_1.png" alt="png" /></p>
+<p><img src="/pages/mydoc/Financial%20Analysis/time-series-data/output_96_1.png" alt="png" /></p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df1</span><span class="p">[</span><span class="s">"Seasonal First Difference"</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </code></pre></div></div>
@@ -2401,12 +2437,12 @@ strong evidence against the null hypothesis, reject the null hypothesis. Data ha
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig_first</span> <span class="o">=</span> <span class="n">plot_acf</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="s">"Milk First Difference"</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span><span class="n">lags</span><span class="o">=</span><span class="mi">125</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><img src="../../../data/time-series-analysis/output_95_0.png" alt="png" /></p>
+<p><img src="/pages/mydoc/Financial%20Analysis/time-series-data/output_102_0.png" alt="png" /></p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig_seasonal_first</span> <span class="o">=</span> <span class="n">plot_acf</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="s">"Seasonal First Difference"</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span><span class="n">lags</span><span class="o">=</span><span class="mi">125</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><img src="../../../data/time-series-analysis/output_96_0.png" alt="png" /></p>
+<p><img src="/pages/mydoc/Financial%20Analysis/time-series-data/output_103_0.png" alt="png" /></p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
@@ -2415,7 +2451,7 @@ strong evidence against the null hypothesis, reject the null hypothesis. Data ha
 <span class="n">fig</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">graphics</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">plot_pacf</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="s">'Seasonal First Difference'</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">13</span><span class="p">:],</span> <span class="n">lags</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><img src="../../../data/time-series-analysis/output_97_0.png" alt="png" /></p>
+<p><img src="/pages/mydoc/Financial%20Analysis/time-series-data/output_104_0.png" alt="png" /></p>
 
 <p><strong>Note</strong></p>
 <ul>
@@ -2428,325 +2464,24 @@ strong evidence against the null hypothesis, reject the null hypothesis. Data ha
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># FOR NON SEASONAL DATA 
 </span><span class="kn">from</span> <span class="nn">statsmodels.tsa.arima_model</span> <span class="kn">import</span> <span class="n">ARIMA</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s">'ignore'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">help</span><span class="p">(</span><span class="n">ARIMA</span><span class="p">)</span>
-</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Help on class ARIMA in module statsmodels.tsa.arima_model:
-
-class ARIMA(ARMA)
- |  ARIMA(endog, order, exog=None, dates=None, freq=None, missing='none')
- |  
- |  Autoregressive Integrated Moving Average ARIMA(p,d,q) Model
- |  
- |  Parameters
- |  ----------
- |  endog : array-like
- |      The endogenous variable.
- |  order : iterable
- |      The (p,d,q) order of the model for the number of AR parameters,
- |      differences, and MA parameters to use.
- |  exog : array-like, optional
- |      An optional array of exogenous variables. This should *not* include a
- |      constant or trend. You can specify this in the `fit` method.
- |  dates : array-like of datetime, optional
- |      An array-like object of datetime objects. If a pandas object is given
- |      for endog or exog, it is assumed to have a DateIndex.
- |  freq : str, optional
- |      The frequency of the time-series. A Pandas offset or 'B', 'D', 'W',
- |      'M', 'A', or 'Q'. This is optional if dates are given.
- |  
- |  
- |  Notes
- |  -----
- |  If exogenous variables are given, then the model that is fit is
- |  
- |  .. math::
- |  
- |     \phi(L)(y_t - X_t\beta) = \theta(L)\epsilon_t
- |  
- |  where :math:`\phi` and :math:`\theta` are polynomials in the lag
- |  operator, :math:`L`. This is the regression model with ARMA errors,
- |  or ARMAX model. This specification is used, whether or not the model
- |  is fit using conditional sum of square or maximum-likelihood, using
- |  the `method` argument in
- |  :meth:`statsmodels.tsa.arima_model.ARIMA.fit`. Therefore, for
- |  now, `css` and `mle` refer to estimation methods only. This may
- |  change for the case of the `css` model in future versions.
- |  
- |  Method resolution order:
- |      ARIMA
- |      ARMA
- |      statsmodels.tsa.base.tsa_model.TimeSeriesModel
- |      statsmodels.base.model.LikelihoodModel
- |      statsmodels.base.model.Model
- |      builtins.object
- |  
- |  Methods defined here:
- |  
- |  __getnewargs__(self)
- |  
- |  __init__(self, endog, order, exog=None, dates=None, freq=None, missing='none')
- |      Initialize self.  See help(type(self)) for accurate signature.
- |  
- |  fit(self, start_params=None, trend='c', method='css-mle', transparams=True, solver='lbfgs', maxiter=500, full_output=1, disp=5, callback=None, start_ar_lags=None, **kwargs)
- |      Fits ARIMA(p,d,q) model by exact maximum likelihood via Kalman filter.
- |      
- |      Parameters
- |      ----------
- |      start_params : array-like, optional
- |          Starting parameters for ARMA(p,q).  If None, the default is given
- |          by ARMA._fit_start_params.  See there for more information.
- |      transparams : bool, optional
- |          Whehter or not to transform the parameters to ensure stationarity.
- |          Uses the transformation suggested in Jones (1980).  If False,
- |          no checking for stationarity or invertibility is done.
- |      method : str {'css-mle','mle','css'}
- |          This is the loglikelihood to maximize.  If "css-mle", the
- |          conditional sum of squares likelihood is maximized and its values
- |          are used as starting values for the computation of the exact
- |          likelihood via the Kalman filter.  If "mle", the exact likelihood
- |          is maximized via the Kalman Filter.  If "css" the conditional sum
- |          of squares likelihood is maximized.  All three methods use
- |          `start_params` as starting parameters.  See above for more
- |          information.
- |      trend : str {'c','nc'}
- |          Whether to include a constant or not.  'c' includes constant,
- |          'nc' no constant.
- |      solver : str or None, optional
- |          Solver to be used.  The default is 'lbfgs' (limited memory
- |          Broyden-Fletcher-Goldfarb-Shanno).  Other choices are 'bfgs',
- |          'newton' (Newton-Raphson), 'nm' (Nelder-Mead), 'cg' -
- |          (conjugate gradient), 'ncg' (non-conjugate gradient), and
- |          'powell'. By default, the limited memory BFGS uses m=12 to
- |          approximate the Hessian, projected gradient tolerance of 1e-8 and
- |          factr = 1e2. You can change these by using kwargs.
- |      maxiter : int, optional
- |          The maximum number of function evaluations. Default is 500.
- |      tol : float
- |          The convergence tolerance.  Default is 1e-08.
- |      full_output : bool, optional
- |          If True, all output from solver will be available in
- |          the Results object's mle_retvals attribute.  Output is dependent
- |          on the solver.  See Notes for more information.
- |      disp : int, optional
- |          If True, convergence information is printed.  For the default
- |          l_bfgs_b solver, disp controls the frequency of the output during
- |          the iterations. disp &lt; 0 means no output in this case.
- |      callback : function, optional
- |          Called after each iteration as callback(xk) where xk is the current
- |          parameter vector.
- |      start_ar_lags : int, optional
- |          Parameter for fitting start_params. When fitting start_params,
- |          residuals are obtained from an AR fit, then an ARMA(p,q) model is
- |          fit via OLS using these residuals. If start_ar_lags is None, fit
- |          an AR process according to best BIC. If start_ar_lags is not None,
- |          fits an AR process with a lag length equal to start_ar_lags.
- |          See ARMA._fit_start_params_hr for more information.
- |      kwargs
- |          See Notes for keyword arguments that can be passed to fit.
- |      
- |      Returns
- |      -------
- |      `statsmodels.tsa.arima.ARIMAResults` class
- |      
- |      See Also
- |      --------
- |      statsmodels.base.model.LikelihoodModel.fit : for more information
- |          on using the solvers.
- |      ARIMAResults : results class returned by fit
- |      
- |      Notes
- |      -----
- |      If fit by 'mle', it is assumed for the Kalman Filter that the initial
- |      unknown state is zero, and that the initial variance is
- |      P = dot(inv(identity(m**2)-kron(T,T)),dot(R,R.T).ravel('F')).reshape(r,
- |      r, order = 'F')
- |  
- |  predict(self, params, start=None, end=None, exog=None, typ='linear', dynamic=False)
- |      ARIMA model in-sample and out-of-sample prediction
- |      
- |      Parameters
- |      ----------
- |      params : array-like
- |          The fitted parameters of the model.
- |      start : int, str, or datetime
- |          Zero-indexed observation number at which to start forecasting, ie.,
- |          the first forecast is start. Can also be a date string to
- |          parse or a datetime type.
- |      end : int, str, or datetime
- |          Zero-indexed observation number at which to end forecasting, ie.,
- |          the first forecast is start. Can also be a date string to
- |          parse or a datetime type. However, if the dates index does not
- |          have a fixed frequency, end must be an integer index if you
- |          want out of sample prediction.
- |      exog : array-like, optional
- |          If the model is an ARMAX and out-of-sample forecasting is
- |          requested, exog must be given. Note that you'll need to pass
- |          `k_ar` additional lags for any exogenous variables. E.g., if you
- |          fit an ARMAX(2, q) model and want to predict 5 steps, you need 7
- |          observations to do this.
- |      dynamic : bool, optional
- |          The `dynamic` keyword affects in-sample prediction. If dynamic
- |          is False, then the in-sample lagged values are used for
- |          prediction. If `dynamic` is True, then in-sample forecasts are
- |          used in place of lagged dependent variables. The first forecasted
- |          value is `start`.
- |      typ : str {'linear', 'levels'}
- |      
- |          - 'linear' : Linear prediction in terms of the differenced
- |            endogenous variables.
- |          - 'levels' : Predict the levels of the original endogenous
- |            variables.
- |      
- |      
- |      Returns
- |      -------
- |      predict : array
- |          The predicted values.
- |      
- |      
- |      
- |      Notes
- |      -----
- |      Use the results predict method instead.
- |  
- |  ----------------------------------------------------------------------
- |  Static methods defined here:
- |  
- |  __new__(cls, endog, order, exog=None, dates=None, freq=None, missing='none')
- |      Create and return a new object.  See help(type) for accurate signature.
- |  
- |  ----------------------------------------------------------------------
- |  Methods inherited from ARMA:
- |  
- |  geterrors(self, params)
- |      Get the errors of the ARMA process.
- |      
- |      Parameters
- |      ----------
- |      params : array-like
- |          The fitted ARMA parameters
- |      order : array-like
- |          3 item iterable, with the number of AR, MA, and exogenous
- |          parameters, including the trend
- |  
- |  hessian(self, params)
- |      Compute the Hessian at params,
- |      
- |      Notes
- |      -----
- |      This is a numerical approximation.
- |  
- |  loglike(self, params, set_sigma2=True)
- |      Compute the log-likelihood for ARMA(p,q) model
- |      
- |      Notes
- |      -----
- |      Likelihood used depends on the method set in fit
- |  
- |  loglike_css(self, params, set_sigma2=True)
- |      Conditional Sum of Squares likelihood function.
- |  
- |  loglike_kalman(self, params, set_sigma2=True)
- |      Compute exact loglikelihood for ARMA(p,q) model by the Kalman Filter.
- |  
- |  score(self, params)
- |      Compute the score function at params.
- |      
- |      Notes
- |      -----
- |      This is a numerical approximation.
- |  
- |  ----------------------------------------------------------------------
- |  Class methods inherited from ARMA:
- |  
- |  from_formula(formula, data, subset=None, drop_cols=None, *args, **kwargs) from builtins.type
- |      Create a Model from a formula and dataframe.
- |      
- |      Parameters
- |      ----------
- |      formula : str or generic Formula object
- |          The formula specifying the model
- |      data : array-like
- |          The data for the model. See Notes.
- |      subset : array-like
- |          An array-like object of booleans, integers, or index values that
- |          indicate the subset of df to use in the model. Assumes df is a
- |          `pandas.DataFrame`
- |      drop_cols : array-like
- |          Columns to drop from the design matrix.  Cannot be used to
- |          drop terms involving categoricals.
- |      args : extra arguments
- |          These are passed to the model
- |      kwargs : extra keyword arguments
- |          These are passed to the model with one exception. The
- |          ``eval_env`` keyword is passed to patsy. It can be either a
- |          :class:`patsy:patsy.EvalEnvironment` object or an integer
- |          indicating the depth of the namespace to use. For example, the
- |          default ``eval_env=0`` uses the calling namespace. If you wish
- |          to use a "clean" environment set ``eval_env=-1``.
- |      
- |      Returns
- |      -------
- |      model : Model instance
- |      
- |      Notes
- |      -----
- |      data must define __getitem__ with the keys in the formula terms
- |      args and kwargs are passed on to the model instantiation. E.g.,
- |      a numpy structured or rec array, a dictionary, or a pandas DataFrame.
- |  
- |  ----------------------------------------------------------------------
- |  Data descriptors inherited from statsmodels.tsa.base.tsa_model.TimeSeriesModel:
- |  
- |  exog_names
- |  
- |  ----------------------------------------------------------------------
- |  Methods inherited from statsmodels.base.model.LikelihoodModel:
- |  
- |  information(self, params)
- |      Fisher information matrix of model
- |      
- |      Returns -Hessian of loglike evaluated at params.
- |  
- |  initialize(self)
- |      Initialize (possibly re-initialize) a Model instance. For
- |      instance, the design matrix of a linear model may change
- |      and some things must be recomputed.
- |  
- |  ----------------------------------------------------------------------
- |  Data descriptors inherited from statsmodels.base.model.Model:
- |  
- |  __dict__
- |      dictionary for instance variables (if defined)
- |  
- |  __weakref__
- |      list of weak references to the object (if defined)
- |  
- |  endog_names
- |      Names of endogenous variables
-</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">help(ARIMA)</code> returns breif discription about the parameters of model</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model_ns</span><span class="o">=</span><span class="n">ARIMA</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="s">"Milk in pounds per cow"</span><span class="p">],(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
 <span class="n">results_ns</span> <span class="o">=</span> <span class="n">model_ns</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">results_ns</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/home/wajid/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:165: ValueWarning: No frequency information was provided, so inferred frequency M will be used.
-  % freq, ValueWarning)
-/home/wajid/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:165: ValueWarning: No frequency information was provided, so inferred frequency M will be used.
-  % freq, ValueWarning)
-
-
-                                ARIMA Model Results                                 
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                                ARIMA Model Results                                 
 ====================================================================================
 Dep. Variable:     D.Milk in pounds per cow   No. Observations:                  167
 Model:                       ARIMA(1, 1, 1)   Log Likelihood                -873.331
 Method:                             css-mle   S.D. of innovations             45.176
-Date:                      Mon, 13 Jan 2020   AIC                           1754.662
-Time:                              19:28:53   BIC                           1767.134
+Date:                      Tue, 14 Jan 2020   AIC                           1754.662
+Time:                              12:35:09   BIC                           1767.134
 Sample:                          02-28-1962   HQIC                          1759.724
                                - 12-31-1975                                         
 ==================================================================================================
@@ -2769,16 +2504,12 @@ MA.1            3.1218           +0.0000j            3.1218            0.0000
 <span class="k">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/home/wajid/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:165: ValueWarning: No frequency information was provided, so inferred frequency M will be used.
-  % freq, ValueWarning)
-
-
-                                 Statespace Model Results                                 
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                                 Statespace Model Results                                 
 ==========================================================================================
 Dep. Variable:             Milk in pounds per cow   No. Observations:                  168
 Model:             SARIMAX(0, 1, 0)x(1, 1, 2, 12)   Log Likelihood                -533.489
-Date:                            Mon, 13 Jan 2020   AIC                           1074.977
-Time:                                    19:28:55   BIC                           1087.151
+Date:                            Tue, 14 Jan 2020   AIC                           1074.977
+Time:                                    12:35:12   BIC                           1087.151
 Sample:                                01-31-1962   HQIC                          1079.922
                                      - 12-31-1975                                         
 Covariance Type:                              opg                                         
@@ -2798,10 +2529,6 @@ Prob(H) (two-sided):                  0.17   Kurtosis:                         4
 
 Warnings:
 [1] Covariance matrix calculated using the outer product of gradients (complex-step).
-
-
-/home/wajid/anaconda3/lib/python3.7/site-packages/statsmodels/base/model.py:512: ConvergenceWarning: Maximum Likelihood optimization failed to converge. Check mle_retvals
-  "Check mle_retvals", ConvergenceWarning)
 </code></pre></div></div>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">statespace</span><span class="o">.</span><span class="n">SARIMAX</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="s">'Milk in pounds per cow'</span><span class="p">],</span><span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">seasonal_order</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
@@ -2809,16 +2536,12 @@ Warnings:
 <span class="k">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/home/wajid/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:165: ValueWarning: No frequency information was provided, so inferred frequency M will be used.
-  % freq, ValueWarning)
-
-
-                                 Statespace Model Results                                 
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                                 Statespace Model Results                                 
 ==========================================================================================
 Dep. Variable:             Milk in pounds per cow   No. Observations:                  168
 Model:             SARIMAX(0, 1, 0)x(2, 1, 1, 12)   Log Likelihood                -533.700
-Date:                            Mon, 13 Jan 2020   AIC                           1075.400
-Time:                                    19:28:55   BIC                           1087.574
+Date:                            Tue, 14 Jan 2020   AIC                           1075.400
+Time:                                    12:35:12   BIC                           1087.574
 Sample:                                01-31-1962   HQIC                          1080.345
                                      - 12-31-1975                                         
 Covariance Type:                              opg                                         
@@ -2849,8 +2572,8 @@ Warnings:
 ==========================================================================================
 Dep. Variable:             Milk in pounds per cow   No. Observations:                  150
 Model:             SARIMAX(0, 1, 0)x(1, 1, 1, 12)   Log Likelihood                -477.121
-Date:                            Mon, 13 Jan 2020   AIC                            960.243
-Time:                                    19:28:56   BIC                            969.003
+Date:                            Tue, 14 Jan 2020   AIC                            960.243
+Time:                                    12:35:12   BIC                            969.003
 Sample:                                01-31-1962   HQIC                           963.803
                                      - 06-30-1974                                         
 Covariance Type:                              opg                                         
@@ -2869,47 +2592,43 @@ Prob(H) (two-sided):                  0.73   Kurtosis:                         4
 
 Warnings:
 [1] Covariance matrix calculated using the outer product of gradients (complex-step).
-
-
-/home/wajid/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:165: ValueWarning: No frequency information was provided, so inferred frequency M will be used.
-  % freq, ValueWarning)
 </code></pre></div></div>
 
 <p><strong>Note:</strong> we are going to use results from seasonal ARIMA model   with paramets 1,1,1 and sesonality 12 as they  return least AIC and BIC values but for comparison we will also plot non seasonal ARIMA</p>
 
 <h3 id="residue-plots">Residue Plots</h3>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">results_s</span><span class="o">.</span><span class="n">resid</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">results_s</span><span class="o">.</span><span class="n">resid</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f514419edd0&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f8d377aa790&gt;
 </code></pre></div></div>
 
-<p><img src="../../../data/time-series-analysis/output_108_1.png" alt="png" /></p>
+<p><img src="/pages/mydoc/Financial%20Analysis/time-series-data/output_115_1.png" alt="png" /></p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">results_s</span><span class="o">.</span><span class="n">resid</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s">'kde'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f5144116a90&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f8d371e7810&gt;
 </code></pre></div></div>
 
-<p><img src="../../../data/time-series-analysis/output_109_1.png" alt="png" /></p>
+<p><img src="/pages/mydoc/Financial%20Analysis/time-series-data/output_116_1.png" alt="png" /></p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">results_ns</span><span class="o">.</span><span class="n">resid</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">results_ns</span><span class="o">.</span><span class="n">resid</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f514408e910&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f8d370a13d0&gt;
 </code></pre></div></div>
 
-<p><img src="../../../data/time-series-analysis/output_110_1.png" alt="png" /></p>
+<p><img src="/pages/mydoc/Financial%20Analysis/time-series-data/output_117_1.png" alt="png" /></p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">results_ns</span><span class="o">.</span><span class="n">resid</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s">'kde'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f51440168d0&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f8d370eea90&gt;
 </code></pre></div></div>
 
-<p><img src="../../../data/time-series-analysis/output_111_1.png" alt="png" /></p>
+<p><img src="/pages/mydoc/Financial%20Analysis/time-series-data/output_118_1.png" alt="png" /></p>
 
 <p>Residue plots of non seasonal Arima shows a lot of error and clearly the kde is not normal distribution</p>
 
@@ -2917,22 +2636,16 @@ Warnings:
 <p>Predicting values that we know already</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df1</span><span class="p">[</span><span class="s">'forecast'</span><span class="p">]</span> <span class="o">=</span> <span class="n">results_s</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="mi">150</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span> <span class="mi">168</span><span class="p">,</span> <span class="n">dynamic</span><span class="o">=</span> <span class="bp">True</span><span class="p">)</span>  
-<span class="n">df1</span><span class="p">[[</span><span class="s">'Milk in pounds per cow'</span><span class="p">,</span><span class="s">'forecast'</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">df1</span><span class="p">[[</span><span class="s">'Milk in pounds per cow'</span><span class="p">,</span><span class="s">'forecast'</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">));</span>
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f513c35e590&gt;
-</code></pre></div></div>
-
-<p><img src="../../../data/time-series-analysis/output_114_1.png" alt="png" /></p>
+<p><img src="/pages/mydoc/Financial%20Analysis/time-series-data/output_121_0.png" alt="png" /></p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df1</span><span class="p">[</span><span class="s">'forecast'</span><span class="p">]</span> <span class="o">=</span> <span class="n">results_s</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span> <span class="mi">168</span><span class="p">,</span> <span class="n">dynamic</span><span class="o">=</span> <span class="bp">True</span><span class="p">)</span>  
-<span class="n">df1</span><span class="p">[[</span><span class="s">'Milk in pounds per cow'</span><span class="p">,</span><span class="s">'forecast'</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">df1</span><span class="p">[[</span><span class="s">'Milk in pounds per cow'</span><span class="p">,</span><span class="s">'forecast'</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">));</span>
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f513c346750&gt;
-</code></pre></div></div>
-
-<p><img src="../../../data/time-series-analysis/output_115_1.png" alt="png" /></p>
+<p><img src="/pages/mydoc/Financial%20Analysis/time-series-data/output_122_0.png" alt="png" /></p>
 
 <p>as we decrease the start day the predictions show more devaition from actual data</p>
 
@@ -3108,55 +2821,25 @@ Warnings:
 </div>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">future_df</span><span class="p">[</span><span class="s">'forecast'</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="mi">150</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="mi">188</span><span class="p">,</span> <span class="n">dynamic</span><span class="o">=</span> <span class="bp">True</span><span class="p">)</span>  
-<span class="n">future_df</span><span class="p">[[</span><span class="s">'Milk in pounds per cow'</span><span class="p">,</span> <span class="s">'forecast'</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span> 
+<span class="n">future_df</span><span class="p">[[</span><span class="s">'Milk in pounds per cow'</span><span class="p">,</span> <span class="s">'forecast'</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">));</span>
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f513c282090&gt;
+<p><img src="/pages/mydoc/Financial%20Analysis/time-series-data/output_130_0.png" alt="png" /></p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<h2 id="reference">Reference</h2>
+<ul>
+  <li>Applied Econometrics by  Dimitrios Asteriou, Stephen G. Hall.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 </code></pre></div></div>
-
-<p><img src="../../../data/time-series-analysis/output_123_1.png" alt="png" /></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#errors
-</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
-<span class="p">(</span><span class="n">future_df</span><span class="p">[</span><span class="s">'forecast'</span><span class="p">][</span><span class="mi">150</span><span class="p">:</span><span class="mi">168</span><span class="p">]</span><span class="o">-</span><span class="n">future_df</span><span class="p">[</span><span class="s">'Milk in pounds per cow'</span><span class="p">][</span><span class="mi">150</span><span class="p">:</span><span class="mi">168</span><span class="p">])</span>
-</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1974-07-31    -3.820032
-1974-08-31    -2.628890
-1974-09-30     2.276032
-1974-10-31    11.037922
-1974-11-30    14.581376
-1974-12-31    14.485584
-1975-01-31    19.453183
-1975-02-28    27.873977
-1975-03-31    22.150224
-1975-04-30    25.072124
-1975-05-31    25.281989
-1975-06-30    27.852755
-1975-07-31    26.202244
-1975-08-31    24.329067
-1975-09-30    18.139073
-1975-10-31    13.483495
-1975-11-30     7.353887
-1975-12-31     1.242033
-dtype: float64
-</code></pre></div></div>
-
 
 
     <div class="tags">
         
         <b>Tags: </b>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         
         

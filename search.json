@@ -55,9 +55,9 @@
 
 {
 "title": "Time Series Analysis",
-"tags": "ARIMAARMAMoving averageSMASMMAEWMAETS decomposition",
+"tags": "ARIMA",
 "keywords": "",
-"url": "time-series.md",
+"url": "time-series",
 "summary": "Brief indroduction to Time Series analysis."
 }
 ,

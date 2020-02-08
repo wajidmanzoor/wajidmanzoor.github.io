@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Brief indroduction to Linear Optimization.">
+<meta name="keywords" content=",  ">
+<title>Optimization | Wajid Manzoor</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/boxshadowproperties.css">
+<!-- most color styles are extracted out to here -->
+<link rel="stylesheet" href="css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Anchor.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="wajidmanzoor.github.io" href="/feed.xml">
+
+<script type="text/javascript" async 
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?
+config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="/">&nbsp;<span class="projectTitle"> Wajid Manzoor</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- entries without drop-downs appear here -->
+
+
+
+
+                
+                
+                
+                <li><a href="https://github.com/wajidmanzoor/wajidmanzoor.github.io" target="_blank" rel="noopener">GitHub</a></li>
+                
+                
+                
+                <li><a href="about">About</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+			<li>
+
+
+
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:wajid.manzoor.1999@gmail.com?subject=Wajid Manzoor feedback&body=I have some feedback about the Optimization page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a>
+
+</li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Optimization">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+  <div id="main">
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-3" id="tg-sb-sidebar">
+                
+
+<ul id="mysidebar" class="nav">
+  <li class="sidebarTitle">Navigation Bar </li>
+  
+  
+  
+      
+  
+  <li>
+      <a title="Optimization" href="#">Optimization</a>
+      <ul>
+          
+          
+          
+          <li><a title="Linear Optimization" href="linear_optimization">Linear Optimization</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
+      <a title="Financial Analysis" href="#">Financial Analysis</a>
+      <ul>
+          
+          
+          
+          <li><a title="Time Series" href="time-series">Time Series</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Stock Analysis" href="stock_analysis">Stock Analysis</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+      
+      <!-- if you aren't using the accordion, uncomment this block:
+         <p class="external">
+             <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+         </p>
+         -->
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-9" id="tg-sb-content">
+            <div class="post-header">
+   <h1 class="post-title-main">Optimization</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">Brief indroduction to Linear Optimization.</div>
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+
+    
+
+   <h1 id="linear-optimization">Linear Optimization</h1>
+
+<p><strong>Theorem</strong></p>
+
+<ul>
+  <li>If a Linear program has a finite optimim and there is atleast one corner point in the feasible region ,the  corner point optimal exists.</li>
+  <li>The feasible region of a linear program(also called polyhedron) has a corner point iff it does not contian a line.i.e if its feasible region is bounded.</li>
+</ul>
+
+<p>In linear optimization problem  Constraints and objectives are linear functions of decision variables.</p>
+
+<p><strong>Standard form.</strong></p>
+
+<p>Decision variables \(X=(x_1,x_2,x_3……x_n)\)</p>
+
+<p>Objective function</p>
+
+<script type="math/tex; mode=display">\max f(x) \text{where }f(x) = c_0 + \sum_{i=1}^n c_i x_i</script>
+
+<p>constraints</p>
+
+<script type="math/tex; mode=display">g_i(x)=a_{i0}+\sum_{j=1}^n c_{ij}x_{j}\leq 0 \text{ where } i=(1,2,3,4,..m)</script>
+
+<p>Mathametical model standard form</p>
+
+<p>Longhand notation</p>
+
+<p>Maximize \(f(x)\) or \(\min C^Tx\)</p>
+
+<p>subject to \(g_i(x) \leq 0 \ \forall \  i\) or \(Ax \leq b\)</p>
+
+<p>where \(x\geq 0\)</p>
+
+<p>Lets use <code class="language-plaintext highlighter-rouge">gurobipy</code> to solve the linear optimization problem</p>
+
+<p><strong>Multi period inventory problem</strong></p>
+
+<p>Consider a seller who needs to satisfy demands of a product over next T periods. For each period \(t=(1,2,3,4…T)\).demand is \(d_t\) units.The seller can order in period t at the cost of \(c_t\) per unit and there is an upper bound of \(q_t\) on the number of units that can be ordered in period \(t\). Assume that the order arrives instantaneously and any inventory that is held from period \(t\) to \(t+1\) incurs a holding cost of \(h_t\) per unit. The seller starts with zero inventory.Find the optimal ordering plan to satisfy the demand.</p>
+
+<p>Consider a 5-period inventory problem as follows.</p>
+
+<p><img src="/pages/mydoc/Optimization/linear_data/5_period_inventory_problem.png" alt="png" /></p>
+
+<p>let \(x_i\ \forall_i \ i=1,2,..5\) be amount we produce in each period.
+\(I_{kl} \ \forall \ k=1,2,..5 l=1,2,..6\) be amount we carry in inventory from period k to n. here we added to variables \(I_{01}\) at begining and \(I_{5,6}\) at the end.</p>
+
+<p>Objective</p>
+
+<p>Minimize \(f(x,I)= 0I_01+22x_1 + 5I_{12}+42x_2+11I_{23}+100x_3+4I_{34}+1000x_4+0I_{45}+450x_5+0I_{5,6}\)</p>
+
+<p>Demand Constrainst</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+&I_{01}+x_1-I_{12}=10 \\
+&I_{12}+x_2-I_{23}=80\\
+&I_{23}+x_3-I_{34}=100\\
+&I_{34}+x_4-I_{45}=20\\
+&I_{45}+x_5-I{56}=440\\
+\end{align} %]]></script>
+
+<p>Production capacity constraints
+<script type="math/tex">% <![CDATA[
+\begin{align}
+&x_1\leq 40\\
+&x_2\leq 100\\
+&x_3\leq 90\\
+&x_4\leq 500\\
+&x_5\leq 1000\\
+\end{align} %]]></script></p>
+
+<p>Inventory Capacity  Constraints</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+&I_{01}=0\\
+&I_{12}\leq 50\\
+&I_{23}\leq 50\\
+&I_{34}\leq 100\\
+&I_{45}\leq 20\\
+&I_{56}\leq 1000\\
+\end{align} %]]></script>
+
+<p><strong>Note:</strong> \(I_{01}\) must be equal to zero for \(I_{56}\) we can take any large value as it can have infinite left over.</p>
+
+<p>Non negavtive constraints</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+&x_i \geq 0\\
+&I_{kl} \geq 0\\
+\end{align} %]]></script>
+
+<p>\(I_{01}\) must be equal to zero for \(I_{56}\) we can take any large value as it can have infinite left over.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span><span class="o">*</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s">'Five Period Inventory Problem'</span><span class="p">)</span>
+
+
+<span class="n">production_costs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">450</span><span class="p">]</span>
+<span class="n">production_capacities</span> <span class="o">=</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+
+<span class="n">inventory_costs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">inventory_capacities</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+
+<span class="n">demand</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">440</span><span class="p">]</span>
+
+<span class="c1">#create production variables
+</span><span class="n">production_variables</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">production_costs</span><span class="p">)):</span>
+    <span class="n">production_variables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">vtype</span><span class="o">=</span><span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">"x{}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">production_costs</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+<span class="c1">#create inventory variables
+</span><span class="n">inventory_variables</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inventory_costs</span><span class="p">)):</span>
+    <span class="n">inventory_variables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">vtype</span><span class="o">=</span><span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">"i{}{}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">inventory_costs</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+<span class="c1">#integrate new variables    
+</span><span class="n">m</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+                    
+<span class="c1">#production capacity constraints
+</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">production_costs</span><span class="p">)):</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">production_variables</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">production_capacities</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="c1">#inventory capacity constraints
+</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inventory_capacities</span><span class="p">)):</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">inventory_variables</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">inventory_capacities</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    
+<span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">inventory_variables</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1">#demand constraints
+</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">production_costs</span><span class="p">)):</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">inventory_variables</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">production_variables</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">inventory_variables</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>  <span class="o">==</span> 
+                <span class="n">demand</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="c1">#optimize    
+</span><span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+<span class="k">print</span> <span class="p">(</span><span class="s">'Model status:'</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">status</span><span class="p">)</span>
+
+<span class="c1">#write LP
+</span><span class="n">m</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">'Linear Program1.lp'</span><span class="p">)</span>
+
+<span class="c1">#print decision variables
+</span><span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">():</span>
+    <span class="k">print</span> <span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">varName</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+                
+<span class="c1">#print objective value
+</span><span class="k">print</span> <span class="p">(</span><span class="s">'Obj: '</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">objVal</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>Some basic terms</p>
+
+<p><strong>Basis</strong></p>
+
+<p>An \(m \times m\) submatrix \(B\)of \(A\) is a Basis iff \(rank(B)=m\) i.e \(B\) has \(m\) linearly independent columns of \(A\).</p>
+
+<p><strong>Basic Variables</strong></p>
+
+<p>Variables corresponding to columns of basis submatrix.denoted by \(x_B\).</p>
+
+<p><strong>Non-Basic Variables</strong></p>
+
+<p>Variables corresponding to columns of non-basis submatrix.Denoted by \(x_N\).</p>
+
+<p><strong>Basic solution</strong></p>
+
+<p>The solution of desicion variables corresponding to columns of  Basis matrix \(x_B\)</p>
+
+<p>\(x_B=B^{-1}b\) and \(x_N=0\)</p>
+
+<p><strong>Basic Feasible Solution</strong>
+It corresponds to all corner or extreme points of feasible region.</p>
+
+<p>\(x_B=B^{-1}b\) is a Basic feasible solution if \(B^{-1}b \geq 0\).</p>
+
+<h1 id="simplex-algorithm">Simplex Algorithm</h1>
+
+<p>Standard form of LP is</p>
+
+<p>Maximize \(z=C^Tx\)</p>
+
+<p>Subject to \(Ax \leq b\)</p>
+
+<p>where \(x \geq 0\)</p>
+
+<p>Now standard form of linear optimatization can be written as</p>
+
+<p>Maximize \(z=C_B^Tx_B + C_N^Tx_N\)</p>
+
+<p>subject to \(Bx_B + Nx_N=b\)</p>
+
+<p>where \(x_B,x_N \geq 0\)</p>
+
+<p>Here we spilited the matrix \(A\) of order \(mxn\) into Basis submatrix \(B\) of order \(mxm\) and submatrix \(N\) of order \(mx(n-m)\).</p>
+
+<p>Let decision variables corresponding to columns of \(B\) be \(x_B\) and to that of \(N\) be \(x_N\).</p>
+
+<p>here \(x_B\) are basic vriables and \(x_n\) are non-basic variables.</p>
+
+<p>Intially we have</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+&z-C_B^Tx_B -C_N^Tx_N=0\tag{1}\\\\
+&\text{Subjected to}\\
+&Bx_B +Nx_N=b\tag{2}\\\\
+&\text{Multiplying } \ (2)\ \text{by } B^{-1}\\
+&x_B + B^{-1}Nx_N=B^{-1}b\tag{3}\\\\
+&\text{Puting value of } x_B \text{in}\ (1)\\
+& z-(C_N^T-C_B^TB^{-1}N)x_N=C_B^TB^{-1}b\\
+\end{align} %]]></script>
+
+<p>If for al non basic variables \(C_N^T-C_B^TB^{-1}N \leq 0 \)(also called residue error) we have the optimal BFS at \(x_N=0\) as \(x_N \geq 0\)</p>
+
+<p>Else if for some non basic variable \(x_k\) has \(C_{N_k}^T-C_B^TB^{-1}N_k &gt; 0\)</p>
+
+<p>So we can increase the value of \(z\) by increasing \(x_k\).</p>
+<ul>
+  <li>Entering variable \(x_k\)</li>
+</ul>
+
+<script type="math/tex; mode=display">z-(C{N_k}-C_B^TN_k)x_k- \sum_{j\in N \ j\neq k }\big(C_{N_j}-C_BB^{-1}N_j\big)x_j\tag{4}=C_B^TB^{-1}b</script>
+
+<script type="math/tex; mode=display">x_B +B^{-1}N_kx_k+\sum_{j\in N \ j\neq k }B^{-1}N_jx_j=B^{-1}\tag{5}b</script>
+
+<p>As we start increase the value of \(x_k\) some basic variables  might go down to zero if that happens we have to stop increasing \(x_k\) that is called leaving variable condition.</p>
+
+<ul>
+  <li>Leaving variable</li>
+</ul>
+
+<p>\( \text{argmin} \frac{[B^{-1}b]_j}{[B^{-1}N_k]_j} :\ [B^{-1}N_k]_j&gt;0  \)</p>
+
+<p>Here we go for the minimum of basic varaible and stop increasing \(x_k\) when that goes down to zero.</p>
+
+<p><strong>Intial BFS</strong></p>
+
+<p>Assuming \(b \geq 0\)</p>
+
+<p>Now</p>
+
+<p>\(Ax \leq 0\)</p>
+
+<p>Introducing slack variables we have</p>
+
+<p>\(Ax +s =0\)</p>
+
+<p>or</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{bmatrix} A & I \end{bmatrix}\begin{bmatrix}x \\ s\end{bmatrix}=b %]]></script>
+
+<p>Intial BFs is \(x=0 ,s=b \)</p>
+
+<p>Here constraint matrix is \([A \ I]\)</p>
+
+<p>where non-basic submatrix \(A\)  is \(mxn\) and basic submatrix \(I\) is identity matrix of order \(mxm\).</p>
+
+<p>Lets go through a example to understand it better.</p>
+
+<p>Maximize \(z=7x_1+8x_2+10x_3\)</p>
+
+<p>subjected to 
+<script type="math/tex">% <![CDATA[
+\begin{align}
+&2x_1+3x_2+3x_2+2x_3 \leq 1000\\
+&x_1+x_2+2x_3\leq 800\\
+\end{align} %]]></script></p>
+
+<p>where \(x_1,x_2,x_3 \geq 0\)</p>
+
+<p>As the problem is in standard form lets introduce slack variables.we have
+<script type="math/tex">% <![CDATA[
+\begin{align}
+&z-7x_1-8x_2-10x_3=0\\
+&2x_1+3x_2+3x_2+2x_3+s_1=1000\\
+&x_1+x_2+2x_3+s_2=800\\
+\end{align} %]]></script></p>
+
+<p>Here Matrix will be</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+A = \begin{bmatrix} 2&3&2&1&0&0\\ 1&1&2&0&1&0\end{bmatrix} \ \ X = \begin{bmatrix}x_1 \\ x_2 \\ x_3 \\ s_1 \\ s_2 \\ z\end{bmatrix}\ \ C=\begin{bmatrix}-7\\-8\\-10\\0\\0\\1\end{bmatrix}\ \ b=\begin{bmatrix}1000\\800\end{bmatrix} %]]></script>
+
+<p>Now dividing matrix \(A\) in submatrix \(B\) and \(N\) we have</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+B=\begin{bmatrix} 1&0\\ 0&1\end{bmatrix} \ N=\begin{bmatrix} 1&2&0\\ 1&1&2\end{bmatrix} \ x_B=\begin{bmatrix}s_1\\s_2\end{bmatrix}\ x_N=\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix} %]]></script>
+
+<p>Taking intial BFS as \(x_N=0\) and \(x_B=B^{-1}b=b\) we have</p>
+
+<p>so Tableau will be</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{matrix}A&|&B\\-&-&-\\C^T&|&0\end{matrix}=\begin{matrix} \ &x_1&x_2&x_3&s_1&s_2&z\\s_1&2&3&2&1&0&0&|&1000\\ s_2&1&1&2&0&1&0&|&800\\\ &-&-&-&-&-&-&-&-\\\ &-7&-8&-10&0&0&1&|&0\end{matrix} %]]></script>
+
+<p>Now from all  non- basic variable \(x_3\) has greater residue error</p>
+
+<p>\(C{N_k}-C_B^TN_k=10\)</p>
+
+<p>here for Row 1 column 3 in \(A\)</p>
+
+<p>\(\frac{[B^{-1}b]_j}{[B^{-1}N_k]_j}=\frac{1000}{2}=500\)</p>
+
+<p>for Row 2 column 3 in \(A\)</p>
+
+<p>\(\frac{[B^{-1}b]_j}{[B^{-1}N_k]_j}=\frac{800}{2}=400\)</p>
+
+<p>so we will start decreasing residue error of \(x_3\) to zero and \(A_{23}\) to 1.</p>
+
+<p>In doing \(s_2\) will become  a non-basic variable and \(x_2\) basic vatiable so we have to change the row index of \(A\).</p>
+
+<p>Applying \(\frac{1}{2}R_2\to R_2,\ 2 R_2+R_1\to R_1,\ 10R_2+R_3\to R_3\) we have</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{matrix}A&|&B\\-&-&-\\C^T&|&0\end{matrix}=\begin{matrix} \ &x_1&x_2&x_3&s_1&s_2&z\\s_1&1&2&0&1&-1&0&|&200\\ x_2&0.5&0.5&1&0&0.5&0&|&400\\\ &-&-&-&-&-&-&-&-\\\ &-2&-3&0&0&5&1&|&4000\end{matrix} %]]></script>
+
+<p>Now we have to keep going till No residue error is greater than zero.</p>
+
+<p>Finally we will have</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{matrix}A&|&B\\-&-&-\\C^T&|&0\end{matrix}=\begin{matrix} \ &x_1&x_2&x_3&s_1&s_2&z\\x_1&1&2&0&1&-1&0&|&200\\ x_3&0&-0.5&1&-0.5&1&0&|&300\\\ &-&-&-&-&-&-&-&-\\\ &0&1&0&2&3&1&|&4400\end{matrix} %]]></script>
+
+<p>At final for optimal solution we have  \(x_1,x_2\) as basic vatiables with  \(x_1=200,x_3=300\) and \(x_2,s_1,s_2\) as non-basic variables with\(x_2=0,s_1=0,s_2=0\).</p>
+
+<p>Optimal solution \(z=4400\)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#code for simplex algorithm
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span> 
+<span class="k">def</span> <span class="nf">tableau</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">CT</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="s">"""
+    Returns tableau
+    parameters:
+    A=Variable matrix
+    CT=Transform of coefficient matrix of z
+    b=b matrix"""</span>
+    <span class="n">nb_var</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">b_var</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">tab</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">b_var</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">nb_var</span><span class="o">+</span><span class="n">b_var</span><span class="o">+</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">tab</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">),:</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span> <span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s">"float64"</span><span class="p">)</span>
+    <span class="n">tab</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:,:</span><span class="n">nb_var</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">CT</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s">"float64"</span><span class="p">)</span>   
+    <span class="n">tab</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s">'float64'</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">)):</span>
+        <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">nb_var</span><span class="o">+</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tab</span>
+
+<span class="k">def</span> <span class="nf">gen_variables</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
+    <span class="n">num_bvar</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">num_nbvar</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">[</span><span class="mi">0</span><span class="p">,:])</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">-</span><span class="mi">2</span>
+    <span class="n">b_vars</span><span class="o">=</span><span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_bvar</span><span class="p">):</span>
+        <span class="n">b_vars</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">"S_"</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    <span class="n">nb_vars</span><span class="o">=</span><span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_nbvar</span><span class="p">):</span>
+        <span class="n">nb_vars</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">"X_"</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    <span class="n">var</span><span class="o">=</span><span class="n">nb_vars</span><span class="o">+</span><span class="n">b_vars</span>
+    <span class="k">return</span> <span class="n">b_vars</span><span class="p">,</span><span class="n">var</span><span class="p">,</span><span class="n">nb_vars</span>
+
+<span class="k">def</span> <span class="nf">check_residue</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>       
+    <span class="n">m</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">tab</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,:])</span>
+    <span class="k">if</span> <span class="n">m</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">True</span>
+    
+<span class="k">def</span> <span class="nf">pivot_index</span><span class="p">(</span><span class="n">tab</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">minn</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">tab</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">col</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">tab</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">minn</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">agmin</span><span class="o">=</span><span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">tab</span><span class="p">[:,</span><span class="n">col</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">tab</span><span class="p">[:,</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+            <span class="n">agmin</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="o">/</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">"Unbounded Feasible region"</span><span class="p">)</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="n">agmin</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">agmin</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">transformations</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">,</span><span class="n">tab</span><span class="p">):</span>
+    <span class="n">tab</span><span class="p">[</span><span class="n">row</span><span class="p">,:]</span><span class="o">=</span><span class="n">tab</span><span class="p">[</span><span class="n">row</span><span class="p">,:]</span><span class="o">/</span><span class="n">tab</span><span class="p">[</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])):</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">!=</span><span class="n">row</span><span class="p">:</span>
+            <span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span><span class="o">=</span><span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span><span class="o">-</span><span class="p">(</span><span class="n">tab</span><span class="p">[</span><span class="n">row</span><span class="p">,:]</span><span class="o">*</span><span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">col</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">tab</span>
+
+<span class="k">def</span> <span class="nf">change_var</span><span class="p">(</span><span class="n">b_var</span><span class="p">,</span><span class="n">var</span><span class="p">,</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">):</span>
+    <span class="n">b_var</span><span class="p">[</span><span class="n">row</span><span class="p">]</span><span class="o">=</span><span class="n">var</span><span class="p">[</span><span class="n">col</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">b_var</span><span class="p">,</span><span class="n">var</span>
+
+<span class="k">def</span> <span class="nf">r_ans</span><span class="p">(</span><span class="n">b_var</span><span class="p">,</span><span class="n">var</span><span class="p">,</span><span class="n">tab</span><span class="p">,</span><span class="n">in_nbvar</span><span class="p">,</span><span class="n">flag</span><span class="p">):</span>
+    <span class="n">l_ans</span><span class="o">=</span><span class="p">[]</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Optimal value at: "</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">flag</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">b_var</span><span class="p">,</span><span class="n">tab</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="n">l_ans</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">])</span>
+            <span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s">"="</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">in_nbvar</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">b_var</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s">"= 0.0"</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"optimal Value z= "</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">tab</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">l_ans</span><span class="p">,</span><span class="n">tab</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">LPO</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">CT</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">tab</span><span class="o">=</span><span class="p">[],</span><span class="n">ctab</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+    <span class="s">"""
+    returns values of variables for Maximun solution of z and maximum solution of z
+    """</span>
+    <span class="k">if</span> <span class="n">ctab</span><span class="o">==</span><span class="bp">True</span><span class="p">:</span>
+        <span class="n">tab</span><span class="o">=</span><span class="n">tableau</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">CT</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+    <span class="n">b_var</span><span class="p">,</span><span class="n">var</span><span class="p">,</span><span class="n">in_nbvar</span><span class="o">=</span><span class="n">gen_variables</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span>
+    <span class="n">flag</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">check_residue</span><span class="p">(</span><span class="n">tab</span><span class="p">)):</span>
+        <span class="n">flag</span><span class="o">=</span><span class="mi">1</span>
+        <span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">pivot_index</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span>
+        <span class="n">tab</span><span class="o">=</span><span class="n">transformations</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">,</span><span class="n">tab</span><span class="p">)</span>
+        <span class="n">b_var</span><span class="p">,</span><span class="n">var</span><span class="o">=</span><span class="n">change_var</span><span class="p">(</span><span class="n">b_var</span><span class="p">,</span><span class="n">var</span><span class="p">,</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">)</span>
+    <span class="n">l_ans</span><span class="p">,</span><span class="n">optimal</span><span class="o">=</span><span class="n">r_ans</span><span class="p">(</span><span class="n">b_var</span><span class="p">,</span><span class="n">var</span><span class="p">,</span><span class="n">tab</span><span class="p">,</span><span class="n">in_nbvar</span><span class="p">,</span><span class="n">flag</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">l_ans</span><span class="p">,</span><span class="n">optimal</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">A</span><span class="o">=</span><span class="p">[[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]]</span>
+<span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="mi">1000</span><span class="p">,</span><span class="mi">800</span><span class="p">]</span>
+<span class="n">CT</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">LPO</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">CT</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Optimal value at: 
+X_0=200.0
+X_2=300.0
+X_1= 0.0
+optimal Value z= 4400.0
+
+
+
+
+
+([['X_0', 200.0], ['X_2', 300.0]], 4400.0)
+</code></pre></div></div>
+
+<h1 id="duality-theoram">Duality Theoram</h1>
+
+<p>Lets us consider two dual pair of separated locally convex spaces \((X,X<em>)\) and \((Y,Y</em>)\).
+If \(f : X \to R\) is a function then</p>
+
+<p>Primal problem can be defined as finding a value \(x\) such that \(f(x)= \sup_{x \in X}f(x)\).</p>
+
+<p>i.e if \(x\) exists \(f(x)\) is maximum of \(f\) and supremum (least upper bound).
+Let I be the constraints then</p>
+
+<p>Dual problem can be defined as \(f^{‘}=f+I\) it can be written as 
+\(f^{‘}:X,Y \to R\) such that \(f^{‘}(x,0)=f(x)\)</p>
+
+<p>Duality theoram states that \(\sup_{x \in X}f(x)=\inf_{y \in Y}f^{‘}(x,y)\)</p>
+
+<p>It states that  optimization problems can be viewed from either of two perspectives, the primal problem or the dual problem. The solution to the dual problem provides a lower bound or upper bound to the solution of the primal minimization problem or maximization problem respectively.The diffrence between Dual and Primal problem is called Duality Gap.</p>
+
+<h2 id="duality-for-lp">Duality for LP</h2>
+
+<h3 id="lagrangian-relaxation">Lagrangian relaxation</h3>
+
+<p>Lets consider a LP in standard form</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+&z=\max{C^T}\\
+&Ax\leq b\\
+&x \geq0\\
+\end{align} %]]></script>
+
+<p>Lagrangian relaxation : \(g : R^m\to R\)</p>
+
+<script type="math/tex; mode=display">g(y)=b^Ty+max(C-A^Ty)^Tx</script>
+
+<p>consider</p>
+
+<script type="math/tex; mode=display">A = \begin{bmatrix} a_1^T\\a_2^T\\a_3^T\\.\\.\\.\\a_m^T\end{bmatrix}</script>
+
+<p>Constraints can be written as</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+&a_i^Tx=b_i ,i=1,2,...,m\\\\
+&\text{multiplying by second variable } y\\ 
+&y(a_i^Tx-b_i)=0
+\end{align} %]]></script>
+
+<p>For any \(y \in R\) consider the following problem</p>
+
+<script type="math/tex; mode=display">\max_{x\geq0}\bigg(Cx+\sum_{i=1}^m y_i(b_i-a_i^Tx)\bigg)</script>
+
+<p>It can be arranged as</p>
+
+<script type="math/tex; mode=display">\max_{x\geq0}\bigg(\sum_{i=1}^m y_ib_i+(C-\sum_{i=1}^ma_i^Ty_i)x\bigg)</script>
+
+<script type="math/tex; mode=display">\sum_{i=1}^m y_ib_i+\max_{x\geq0}(C-\sum_{i=1}^ma_i^Ty_i)x</script>
+
+<p>or matrix formulation</p>
+
+<script type="math/tex; mode=display">b^Ty+\max_{x\geq0}(C-A^Ty)^Tx</script>
+
+<h4 id="langrangean-dual">Langrangean Dual</h4>
+
+<p>if \(z_{\text{lp}}\) is orginal problem in standard form.</p>
+
+<p>Then 
+<script type="math/tex">z_{\text{dual}}=\min_yg(y)</script></p>
+
+<script type="math/tex; mode=display">z_{\text{dual}}=\min_y\bigg(b^Ty+\max_{x\geq0}(C-A^Ty)^Tx\bigg)</script>
+
+<p>Standard form of Dual
+<script type="math/tex">z_{\text{dual}}=\min_y b^Ty</script>
+objective</p>
+
+<script type="math/tex; mode=display">A^Ty\geq C</script>
+
+<p>for all
+\(y \in R^m\)</p>
+
+<p>if \(C-A^Ty &gt;0\) then</p>
+
+<script type="math/tex; mode=display">\max_{x\geq0}(C-A^Ty)^Tx \to \infty</script>
+
+<script type="math/tex; mode=display">\min_y\bigg(b^Ty+\max_{x\geq0}(C-A^Ty)^Tx\bigg) \to \infty</script>
+
+<p>so to get a definite upper bound we have to choose \(y\) such that</p>
+
+<p>\(C-A^Ty \leq 0\) then</p>
+
+<script type="math/tex; mode=display">\max_{x\geq0}(C-A^Ty)^Tx=0</script>
+
+<script type="math/tex; mode=display">g(y)=b^Ty</script>
+
+<p><strong>Theoram(Weak Duality)</strong></p>
+
+<ul>
+  <li>if \(x\) ia any feasible solution of orginal LP and \(y\) is any feasible solution of dual problem then \(C^Tx\leq b^Ty\).</li>
+</ul>
+
+<p>i.e any feasible solution of the dual yeilds the upper bound of orginal LP.</p>
+
+<p>we know</p>
+
+<script type="math/tex; mode=display">A^Ty\geq C</script>
+
+<p>Now taking transpose on both sides we have</p>
+
+<script type="math/tex; mode=display">(A^Ty)^T=C^T</script>
+
+<script type="math/tex; mode=display">y^TA=C^T</script>
+
+<p>muptiplying it by \(x\) we have</p>
+
+<script type="math/tex; mode=display">y^TAx=C^Tx</script>
+
+<p>we also know</p>
+
+<script type="math/tex; mode=display">Ax\geq b</script>
+
+<p>Now taking transpose on both sides we have</p>
+
+<script type="math/tex; mode=display">(Ax)^T\leq b^T</script>
+
+<script type="math/tex; mode=display">x^TA^T\leq b^T</script>
+
+<p>muptiplying it by \(y\) we have</p>
+
+<script type="math/tex; mode=display">x^TA^Ty\leq b^Ty</script>
+
+<p>\(x^TA^Ty\) and \(y^TAx\) are both \(1 \times 1\) matrix</p>
+
+<p>\((x^TA^Ty)^T=x^TA^Ty\) or \((y^TAx)^T=y^TAx\)</p>
+
+<p>so we have</p>
+
+<script type="math/tex; mode=display">y^TAx=x^TA^Ty</script>
+
+<p>then</p>
+
+<script type="math/tex; mode=display">b^Ty\geq C^Tx</script>
+
+<p><strong>Theoram(Storng Duality)</strong></p>
+
+<ul>
+  <li>if \( x^* \) is optimal  solution of orginal LP and \( y^* \) is optimal solution of dual problem then \( C^Tx^<em>=b^Ty^</em> \).</li>
+</ul>
+
+<p>let us consider \( x^* \) to be the optimal solution of orginal lp problem i.e \( z_{lp}=C^Tx^* \)</p>
+
+<p>let us consider \( y^* \) to be the optimal solution of orginal lp problem i.e \( z_{\text{dual}}=b^Ty^* \)</p>
+
+<p>Here 
+<script type="math/tex">z_{\text{dual}}=\min_yg(y)</script></p>
+
+<p>where</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+&g(y)=b^Ty+\max_{x\geq0}(C-A^Ty)^Tx\\
+&g(y)=b^Ty+\max_{x\geq0}(C^T-Ay^T)x\\
+&g(y)=b^Ty+\max_{x\geq0}(C^T-Ay^T)x\\
+&g(y)=\max_{x\geq0}\bigg(C^Tx-y^T(Ax-b)\bigg)\\
+\end{align} %]]></script>
+
+<p>then we have</p>
+
+<script type="math/tex; mode=display">g(y)=C^Tx^*</script>
+
+<p>so
+<script type="math/tex">z_{\text{dual}}=C^Tx^*</script></p>
+
+<p>as \(A x^* -b=0 \)</p>
+
+<script type="math/tex; mode=display">\implies C^Tx^*=b^Ty^*</script>
+
+<p><strong>Rules for Dual Formulation</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Orginal LP</th>
+      <th>Dual</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>i-th constraint \(\leq \)</td>
+      <td>variable \(y_i \geq 0\)</td>
+    </tr>
+    <tr>
+      <td>i-th constraint \(\geq \)</td>
+      <td>variable \(y_i \leq 0\)</td>
+    </tr>
+    <tr>
+      <td>i-th constraint \(= \)</td>
+      <td>variable \(y_i\) free</td>
+    </tr>
+    <tr>
+      <td>\(x_i \geq 0\)</td>
+      <td>i-th constraint \(\geq \)</td>
+    </tr>
+    <tr>
+      <td>\(x_i \leq 0\)</td>
+      <td>i-th constraint \(\leq \)</td>
+    </tr>
+    <tr>
+      <td>\(x_i\)free</td>
+      <td>i-th constraint \(= \)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>example:</p>
+
+<p>Let the original LP be</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+&z_{lp}=\max \sum c_jx_j\\\\
+&a_i^Tx=b_i, \ i \in I_1\\
+&a_i^Tx\leq b_i, \ i \in I_2\\
+&a_i^Tx\geq b_i,\ i \in I_3\\\\
+&x_j \geq 0, \ j \in J_1\\
+&x_j \leq 0, \ j \in J_2\\
+&x_j free , \ j \in J_3\\
+\end{align} %]]></script>
+
+<p>Then Dual LP will be</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+&z_{\text{dual}}=\min b^Ty\\\\
+&a_{ij}^Tx\geq c_j, \ J \in J_1\\
+&a_{ij}^Tx\leq c_j, \ J \in J_2\\
+&a_{ij}^Tx= c_j, \ J \in J_3\\\\
+&y_j free , \ j \in J_1\\
+&y_j \geq 0, \ j \in J_2\\
+&y_j \leq 0, \ j \in J_3\\
+\end{align} %]]></script>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+
+
+    <div class="tags">
+        
+        <b>Tags: </b>
+        
+        
+        
+    </div>
+
+
+
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2020 Wajid Manzoor. All rights reserved. <br />
+ 
+                </div>
+            </div>
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+</div>
+<!-- /#main -->
+    </div>
+
+</body>
+
+</html>

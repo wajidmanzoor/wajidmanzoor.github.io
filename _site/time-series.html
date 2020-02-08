@@ -189,12 +189,35 @@ config=TeX-AMS-MML_HTMLorMML"></script>
       
   
   <li>
+      <a title="Optimization" href="#">Optimization</a>
+      <ul>
+          
+          
+          
+          <li><a title="Linear Optimization" href="linear_optimization">Linear Optimization</a></li>
+          
+          
+          
+          
+      </ul>
+   </li>
+     
+      
+  
+  <li>
       <a title="Financial Analysis" href="#">Financial Analysis</a>
       <ul>
           
           
           
           <li><a title="Time Series" href="time-series">Time Series</a></li>
+          
+          
+          
+          
+          
+          
+          <li><a title="Stock Analysis" href="stock_analysis">Stock Analysis</a></li>
           
           
           
@@ -1262,16 +1285,16 @@ memory usage: 68.8 KB
 
         year      - 1959q1 - 2009q3
         quarter   - 1-4
-        realgdp   - Real gross domestic product (Bil. of chained 2005 US\\),
+        realgdp   - Real gross domestic product (Bil. of chained 2005 US $,
                     seasonally adjusted annual rate)
         realcons  - Real personal consumption expenditures (Bil. of chained
-                    2005 US\\), seasonally adjusted annual rate)
+                    2005 US $, seasonally adjusted annual rate)
         realinv   - Real gross private domestic investment (Bil. of chained
-                    2005 US\\), seasonally adjusted annual rate)
+                    2005 US $, seasonally adjusted annual rate)
         realgovt  - Real federal consumption expenditures &amp; gross investment
-                    (Bil. of chained 2005 US\\), seasonally adjusted annual rate)
+                    (Bil. of chained 2005 US $, seasonally adjusted annual rate)
         realdpi   - Real private disposable income (Bil. of chained 2005
-                    US\\), seasonally adjusted annual rate)
+                    US $, seasonally adjusted annual rate)
         cpi       - End of the quarter consumer price index for all urban
                     consumers: all items (1982-84 = 100, seasonally adjusted).
         m1        - End of the quarter M1 nominal money stock (Seasonally
@@ -1450,8 +1473,10 @@ memory usage: 68.8 KB
 </ul>
 
 <h3 id="1-simple-moving-average">1. Simple Moving Average</h3>
-<p><script type="math/tex">\text{SMA}_i = \frac{\Sigma x_i}{N}</script>
-<script type="math/tex">N = \text{Calculation period}</script></p>
+
+<script type="math/tex; mode=display">\text{SMA}_i = \frac{\Sigma x_i}{N}</script>
+
+<script type="math/tex; mode=display">N = \text{Calculation period}</script>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[</span><span class="s">'SMA6'</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s">'realgdp'</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">df</span><span class="p">[</span><span class="s">'SMA12'</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s">'realgdp'</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -1463,27 +1488,41 @@ memory usage: 68.8 KB
 
 <h3 id="2--smoothed-moving-average-smma">2.  Smoothed Moving Average (SMMA)</h3>
 <ul>
-  <li>First Value is calculated by 
-<script type="math/tex">\text{SMMA}_1 = \frac{\Sigma x_i}{N}</script></li>
-  <li>Second Value is calculated by 
-<script type="math/tex">\text{SMMA}_2 = \frac{\text{SMMA}_1 \times (N-1) + x_i}{N}</script></li>
-  <li>Succeeding Values are calculated by 
-<script type="math/tex">\text{SMMA}_i = \frac{\text{SMMA}_{(i-1)} \times N +x_i}{N}</script>
-<script type="math/tex">N = \text{Calculation period}</script></li>
+  <li>First Value is calculated by</li>
 </ul>
 
+<script type="math/tex; mode=display">\text{SMMA}_1 = \frac{\Sigma x_i}{N}</script>
+
+<ul>
+  <li>Second Value is calculated by</li>
+</ul>
+
+<script type="math/tex; mode=display">\text{SMMA}_2 = \frac{\text{SMMA}_1 \times (N-1) + x_i}{N}</script>
+
+<ul>
+  <li>Succeeding Values are calculated by</li>
+</ul>
+
+<script type="math/tex; mode=display">\text{SMMA}_i = \frac{\text{SMMA}_{(i-1)} \times N +x_i}{N}</script>
+
+<script type="math/tex; mode=display">N = \text{Calculation period}</script>
+
 <h3 id="3-linear-weighted-moving-average">3. LInear Weighted Moving Average</h3>
-<p><script type="math/tex">\text{LWMA}_i =\frac{\Sigma x_i \times \omega_i}{\Sigma N}</script>
-where \(N =\) Calculation period</p>
+
+<script type="math/tex; mode=display">\text{LWMA}_i =\frac{\Sigma x_i \times \omega_i}{\Sigma N}</script>
+
+<p>where \(N =\) Calculation period</p>
 
 <h3 id="4-exponential-weighted-moving-average">4. Exponential weighted moving Average</h3>
+
 <ul>
   <li>An exponential moving average (EMA), also known as an exponentially weighted moving average (EWMA), is a first-order infinite impulse response filter that applies weighting factors which decrease exponentially. The weighting for each older datum decreases exponentially.</li>
 </ul>
 
-<p><script type="math/tex">% <![CDATA[
+<script type="math/tex; mode=display">% <![CDATA[
 y_t=\begin{cases}x_1 & t=1\\ \alpha x_t+(1-\alpha)y_{t-1} & t>1\end{cases} %]]></script>
-\(y_1\) can be intailize to \(x_1\) or average of first 4 or 5 observations. \(y_1\) initailizing effects on resultant moving average if depends on \(\omega\).Smaller \(\omega\) make choice of \(y_1\) relatively more important.</p>
+
+<p>\(y_1\) can be intailize to \(x_1\) or average of first 4 or 5 observations. \(y_1\) initailizing effects on resultant moving average if depends on \(\omega\).Smaller \(\omega\) make choice of \(y_1\) relatively more important.</p>
 
 <p>\(y_t = y_{t-1} + \alpha(x_t-y_{t-1})\)</p>
 
@@ -1492,11 +1531,13 @@ y_t=\begin{cases}x_1 & t=1\\ \alpha x_t+(1-\alpha)y_{t-1} & t>1\end{cases} %]]><
 
 <p>\(\frac{1}{\alpha}=1+(1-\alpha)^2+(1-\alpha)^3+(1-\alpha)^4+….\)</p>
 
-<p>so
-<script type="math/tex">y_t= \frac{[x_t+(1-\alpha)x_{t-1}+(1-\alpha)^2x_{t-2}+(1-\alpha)^3x_{t-3}+......]}{1+(1-\alpha)^2+(1-\alpha)^3+(1-\alpha)^4+....}</script></p>
+<p>so</p>
 
-<p>taking \(\omega^i=(1-\alpha)^i\) we have
-<script type="math/tex">y_t= \frac{\sum_{i=0}^t\omega_i x_{t-1}}{\sum \omega_i}</script></p>
+<script type="math/tex; mode=display">y_t= \frac{[x_t+(1-\alpha)x_{t-1}+(1-\alpha)^2x_{t-2}+(1-\alpha)^3x_{t-3}+......]}{1+(1-\alpha)^2+(1-\alpha)^3+(1-\alpha)^4+....}</script>
+
+<p>taking \(\omega^i=(1-\alpha)^i\) we have</p>
+
+<script type="math/tex; mode=display">y_t= \frac{\sum_{i=0}^t\omega_i x_{t-1}}{\sum \omega_i}</script>
 
 <p>Commonly used values of  \(\alpha\):</p>
 
@@ -1586,11 +1627,12 @@ y_t=\begin{cases}x_1 & t=1\\ \alpha x_t+(1-\alpha)y_{t-1} & t>1\end{cases} %]]><
 
 <p>It is a seasonal adjusment technique to construct a number of construct series ,which can be reconstructed to orginal by addition or multiplication.The series is usualy decomposed into</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* \\(\tau_t\\) Trend conponent which reflects the long term progression.
-* \\(\zeta_t\\) Cynical component which reflects repeated but not periodic fluctuations.
-* \\(S_t\\) Seasonal component reflects seasonality.
-* \\(\epsilon_t\\) noise or error reflects random influences.
-</code></pre></div></div>
+<ul>
+  <li>\(\tau_t\) Trend component which reflects the long term progression.</li>
+  <li>\(\zeta_t\) Cynical component which reflects repeated but not periodic fluctuations.</li>
+  <li>\(S_t\) Seasonal component reflects seasonality.</li>
+  <li>\(\epsilon_t\) noise or error reflects random influences.</li>
+</ul>
 
 <p><strong>Note: Cynical and trend is grouped into one called just trend in some ETS-decomposition models eg. STL</strong>
 Let \(y_t\) be a time series then</p>
@@ -1637,15 +1679,21 @@ Let \(y_t\) be a time series then</p>
 <p>Some terms before we go ahead</p>
 
 <p><strong>1.Mean</strong>
-is average value of the dataset.
-<script type="math/tex">\mu=\frac{\sum_0^n x_i}{n}</script>
-<strong>2.Variance</strong>
-is the expectation of the squared deviation of a random variable from its mean.
-<script type="math/tex">\sigma^2=\frac{\sum_0^n (x_i-\mu)^2}{n}</script>
-<strong>3.Covariance</strong>
-is a measure of the joint variability of two random variables.
-<script type="math/tex">\text{cov}(x,y)=\frac{\sum_0^n(x_i-\mu_x)(y_i-\mu_y)}{n}</script>
-<strong>4. Stationary series</strong>
+is average value of the dataset.</p>
+
+<script type="math/tex; mode=display">\mu=\frac{\sum_0^n x_i}{n}</script>
+
+<p><strong>2.Variance</strong>
+is the expectation of the squared deviation of a random variable from its mean.</p>
+
+<script type="math/tex; mode=display">\sigma^2=\frac{\sum_0^n (x_i-\mu)^2}{n}</script>
+
+<p><strong>3.Covariance</strong>
+is a measure of the joint variability of two random variables.</p>
+
+<script type="math/tex; mode=display">\text{cov}(x,y)=\frac{\sum_0^n(x_i-\mu_x)(y_i-\mu_y)}{n}</script>
+
+<p><strong>4. Stationary series</strong>
 is time series whose mean ,variance and covariance are not function of time.</p>
 
 <p><strong>5.Diffrencing</strong>
@@ -1653,17 +1701,17 @@ in statistics is a transformation applied to time-series data in order to make i
 
 <p>First order diffrencing</p>
 
-<p>\(y’<em>t=y_t-y</em>{t-1}\)</p>
+<p>\( y_t’=y_t-y_{t-1}\)</p>
 
 <p>Second order diffrencing</p>
 
-<p>\(y’‘<em>t=y’_t-y’</em>{t-1}\)</p>
+<p>\( y_t’‘=y_t’-y_{t-1}’\)</p>
 
 <p>and so on</p>
 
 <p>Seasonal diffrencing</p>
 
-<p>\(y’<em>t=y_t-y</em>{t-m}\)</p>
+<p>\( y_t’=y_t-y_{t-m}\)</p>
 
 <p>\(m= \) duration of season</p>
 
@@ -1698,29 +1746,11 @@ in statistics is a transformation applied to time-series data in order to make i
 
 <p>stationary in \(AR(p)\) model is guarented only if the root of polynomail \((1-\varphi z)=0\) are greater than 1 in absolute value.</p>
 
-<p>if \(\lambda\) is its root then condition is</p>
+<p>if \( \lambda \) is its root then condition is</p>
 
-<table>
-  <tbody>
-    <tr>
-      <td>\(</td>
-      <td>\lambda</td>
-      <td>=\frac{1}{</td>
-      <td>\varphi</td>
-      <td>}&gt;1\)</td>
-    </tr>
-  </tbody>
-</table>
+<p>\( \mid \lambda\mid=\frac{1}{\mid\varphi\mid}&gt;1 \)</p>
 
-<table>
-  <tbody>
-    <tr>
-      <td>\(</td>
-      <td>\varphi</td>
-      <td>&lt;1\)</td>
-    </tr>
-  </tbody>
-</table>
+<p>\( \mid\varphi\mid&lt;1 \)</p>
 
 <p>A necessary but not sufficient requirement for the AR(p) model to be stationary is that
 the summation of the p autoregressive coefficients should be less than 1:</p>
@@ -1808,15 +1838,7 @@ the summation of the p autoregressive coefficients should be less than 1:</p>
 &cor(y_t,y_{t-k})=\varphi^k\\
 \end{align} %]]></script>
 
-<table>
-  <tbody>
-    <tr>
-      <td>so for \(AR(1)\) model Autocorrelation function will deacy exponentially as k increases as \(</td>
-      <td>\varphi</td>
-      <td>&lt;1\).</td>
-    </tr>
-  </tbody>
-</table>
+<p>so for \(AR(1)\) model Autocorrelation function will deacy exponentially as k increases as \(\mid\varphi\mid&lt;1\).</p>
 
 <p>Finally, the partial autocorrelation function (PACF) involves plotting the estimated coefficient \(Y_{t−k}\)from an OLS estimate of an \(AR(k) \)process, against k. If the observations are generated by an \(AR(p)\) process then the theoretical partial autocorrelations will be high and significant for up to p lags and zero for lags beyond p.</p>
 
@@ -1865,14 +1887,15 @@ Let \(y_t\) be a time series then \(MA(q)\) MA of order q is defined as
 
     <p>using lag operator we can write</p>
 
-    <p><script type="math/tex">% <![CDATA[
+    <script type="math/tex; mode=display">% <![CDATA[
 \begin{align}
   &y_t=(1+\theta L)\epsilon_t\\
   &\epsilon_t=y_t(1+\theta L)^{-1}\\\\
-  &\text{if } | \theta | <1 \text{ above equation can be considered as sum of an infinite gp series}\\\\
+  &\text{if } \mid \theta \mid <1 \text{ above equation can be considered as sum of an infinite gp series}\\\\
   &\epsilon_t=y_t(1-\theta L +\theta^2 L^2-\theta^3 L^3+......)
   \end{align} %]]></script>
-  so any \(MA(q)\) model can be converted into infnite \(AR\) process with geometrically declining weights if \(|\theta|&lt;1\).</p>
+
+    <p>so any \(MA(q)\) model can be converted into infnite \(AR\) process with geometrically declining weights if \(\mid\theta\mid&lt;1\).</p>
   </li>
 </ul>
 

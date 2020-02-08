@@ -27,7 +27,29 @@
 
 
 
+{
+"title": "Optimization",
+"tags": "",
+"keywords": "",
+"url": "linear_optimization",
+"summary": "Brief indroduction to Linear Optimization."
+}
+,
 
+
+
+
+
+
+
+{
+"title": "Stock Analysis",
+"tags": "PortfolioANNCPAMSharpe RatioLSTM",
+"keywords": "",
+"url": "stock_analysis",
+"summary": "Brief indroduction to Stock analysis."
+}
+,
 
 
 
